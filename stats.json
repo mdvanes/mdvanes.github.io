@@ -5,16 +5,16 @@
       "path---dop-wont-boot-and-usb-issues-9e1cb2f28c6abfc85dda.js.map"
     ],
     "path---fronteers-2014-css": [
-      "path---fronteers-2014-css-b0e2d9d4d2d34e825fc8.js",
-      "path---fronteers-2014-css-b0e2d9d4d2d34e825fc8.js.map"
+      "path---fronteers-2014-css-f2fe5186e4fda4ae512d.js",
+      "path---fronteers-2014-css-f2fe5186e4fda4ae512d.js.map"
     ],
     "path---on-reactive": [
-      "path---on-reactive-c6baa8c2487de4389d13.js",
-      "path---on-reactive-c6baa8c2487de4389d13.js.map"
+      "path---on-reactive-db394775eebefd76d492.js",
+      "path---on-reactive-db394775eebefd76d492.js.map"
     ],
     "path---apollo-client-in-practice": [
-      "path---apollo-client-in-practice-47740e4ca1bdbde34a25.js",
-      "path---apollo-client-in-practice-47740e4ca1bdbde34a25.js.map"
+      "path---apollo-client-in-practice-af997d6a674280f2358a.js",
+      "path---apollo-client-in-practice-af997d6a674280f2358a.js.map"
     ],
     "path---npm-workaround": [
       "path---npm-workaround-68542e2df9d45845bb19.js",
@@ -41,8 +41,8 @@
       "path---utopic-dop-c1d913ce0a56a9f0df93.js.map"
     ],
     "component---src-layouts-index-jsx": [
-      "component---src-layouts-index-jsx-749aa7af0f43d812f933.js",
-      "component---src-layouts-index-jsx-749aa7af0f43d812f933.js.map"
+      "component---src-layouts-index-jsx-450c823afa57addfad93.js",
+      "component---src-layouts-index-jsx-450c823afa57addfad93.js.map"
     ],
     "path---categories-mypc": [
       "path---categories-mypc-be4b44761013ba367eb2.js",
@@ -73,24 +73,24 @@
       "path---polymer-2-and-type-script-65589a0b2b1ae92999c0.js.map"
     ],
     "path---index": [
-      "path---index-b9d91b7d84cb8b8e5d88.js",
-      "path---index-b9d91b7d84cb8b8e5d88.js.map"
+      "path---index-bfb4035f68b784a91a84.js",
+      "path---index-bfb4035f68b784a91a84.js.map"
     ],
     "component---src-pages-about-jsx": [
       "component---src-pages-about-jsx-fe2006a207b696909200.js",
       "component---src-pages-about-jsx-fe2006a207b696909200.js.map"
     ],
     "path---tags-webdevelopment": [
-      "path---tags-webdevelopment-c01da7f5c69776c07f85.js",
-      "path---tags-webdevelopment-c01da7f5c69776c07f85.js.map"
+      "path---tags-webdevelopment-422b2c8c236e67e292b5.js",
+      "path---tags-webdevelopment-422b2c8c236e67e292b5.js.map"
     ],
     "path---knockout-js-and-es-6": [
       "path---knockout-js-and-es-6-75b365d87053655705cd.js",
       "path---knockout-js-and-es-6-75b365d87053655705cd.js.map"
     ],
     "path---categories-webdevelopment": [
-      "path---categories-webdevelopment-80d9a91a76eb7d9eee8a.js",
-      "path---categories-webdevelopment-80d9a91a76eb7d9eee8a.js.map"
+      "path---categories-webdevelopment-753a5dcc57ffa2b455b0.js",
+      "path---categories-webdevelopment-753a5dcc57ffa2b455b0.js.map"
     ],
     "commons": [
       "commons-94aef244aff669ad438d.js",
@@ -139,14 +139,18 @@
       "component---src-pages-index-jsx-9969ae5aad47cb198c0c.js.map"
     ],
     "app": [
-      "app-d9ed888935db49567ec2.js",
+      "app-3c59ebbb0aca71c5ef59.js",
       "build-js-styles.css",
-      "app-d9ed888935db49567ec2.js.map",
+      "app-3c59ebbb0aca71c5ef59.js.map",
       "build-js-styles.css.map"
     ],
     "path---gaining-root-access-to-smart-home-gateway": [
       "path---gaining-root-access-to-smart-home-gateway-013e01c9320f668fbd1c.js",
       "path---gaining-root-access-to-smart-home-gateway-013e01c9320f668fbd1c.js.map"
+    ],
+    "path---micro-frontends-in-a-nutshell": [
+      "path---micro-frontends-in-a-nutshell-483919b1b2c7baa3ac61.js",
+      "path---micro-frontends-in-a-nutshell-483919b1b2c7baa3ac61.js.map"
     ],
     "path---mypc": [
       "path---mypc-3f06b01760b935ead1b3.js",

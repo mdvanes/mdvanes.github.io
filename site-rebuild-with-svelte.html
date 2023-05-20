@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Site Rebuild with Svelte</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="I wanted to update the previous version of the blog (mdworld-jackson) built on SSG (Static Site Generation) with Gatsby.
+It was several majors of Gatsby behind and contained several workarounds that would take a lot of time to figure out, so I took..."><meta property="og:url" content="https://mdworld.nl//site-rebuild-with-svelte">
+
+    
+
+    <meta property="og:title" content="Site Rebuild with Svelte">
+
+    <meta property="og:description" content="I wanted to update the previous version of the blog (mdworld-jackson) built on SSG (Static Site Generation) with Gatsby.
+It was several majors of Gatsby behind and contained several workarounds that would take a lot of time to figure out, so I took...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Site Rebuild with Svelte</h1>
+  <p class="meta svelte-191nhos"><span>Published: 19-05-2023</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>I wanted to update the previous version of the blog (<a href="https://github.com/mdvanes/mdworld-jackson">mdworld-jackson</a>) built on SSG (Static Site Generation) with Gatsby.
+It was several majors of Gatsby behind and contained several workarounds that would take a lot of time to figure out, so I took it as an opportunity to move to a new stack. SSG with SvelteKit. Shying away from runtime component libraries or CSS sets, the target is to make a package that is a small as possible.</p>
+<p>Recently I built <a href="https://github.com/code-star/codestar-website-next" rel="nofollow">codestar-website-next</a>, a
+blog-like site built on SSG with NextJS. This was such a breeze, that I wanted to look at a
+similar SSG driven stack for this new theme. I wanted to look into Svelte for some time, so after
+experimenting for a couple of hours I landed on a new stack with Svelte, SvelteKit and Vite.</p>
+<p>An important requirement to keep from the previous theme, is to support code in Markdown. In Gatsby it is possible to use React in Markdown with <code>MDX</code>, and Svelte supports a similar way of working with <code>MDsveX</code>:</p>
+<pre class="language-mdsvex"><!-- HTML_TAG_START --><code class="language-mdsvex"># This is a markdown heading
+
+This is markdown text
+
+&lt;script&gt;
+import Lightbox from &#39;$lib/components/Lightbox/Lightbox.svelte&#39;
+&lt;/script&gt;
+
+&lt;Lightbox imgpath=&quot;/lightbox/mfe/module-federation.svg&quot; imgtitle=&quot;Module Federation&quot; /&gt;</code><!-- HTML_TAG_END --></pre>
+<p>Which is rendered as a clickable image:</p>
+<button class="lightbox"><img src="/lightbox/mfe/module-federation.svg" alt="Module Federation"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Module Federation</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/mfe/module-federation.svg" alt="Module Federation"></dialog>
+<p>See the code for the <code>Lightbox</code> component in the <a href="https://github.com/mdvanes/mdworld-ross/blob/main/src/lib/components/Lightbox/Lightbox.svelte" rel="nofollow">mdworld-ross repo</a>.</p>
+<p>The only missing technology from my wishlist was Deno, because of my preference for TypeScript. My
+first SSG attempt <a href="https://github.com/mdvanes/deno-ssg-blog" rel="nofollow">deno-ssg-blog</a> used a library that
+was still experimental, but now there is <a href="https://fresh.deno.dev/" rel="nofollow">Deno Fresh</a>. It was too much
+time to figure that out now when combining it with Svelte, so I will keep that for another
+experiment.</p>
+<p>For more information about the current stack, see the <a href="../about">about page</a>.</p>
+<h1>Old themes</h1>
+<p>Static versions of the 2 last themes still run <a href="https://mdvanes.github.io/mdworld-ingram" rel="nofollow">here (2013-2018)</a>
+and <a href="https://mdvanes.github.io/mdworld-simon" rel="nofollow">here (2010-2013)</a>.</p>
+<h2>Theme 2018-2023</h2>
+<button class="lightbox"><img src="/lightbox/site-rebuild-with-svelte/theme-jackson.jpg" alt="Theme 2018-2023"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Theme 2018-2023</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/site-rebuild-with-svelte/theme-jackson.jpg" alt="Theme 2018-2023"></dialog>
+<h2>Theme 2013-2018</h2>
+<button class="lightbox"><img src="/lightbox/site-rebuild-with-svelte/theme-ingram.jpg" alt="Theme 2013-2018"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Theme 2013-2018</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/site-rebuild-with-svelte/theme-ingram.jpg" alt="Theme 2013-2018"></dialog>
+<h2>Theme 2010-2013</h2>
+<button class="lightbox"><img src="/lightbox/site-rebuild-with-svelte/theme-simon.jpg" alt="Theme 2010-2013"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Theme 2010-2013</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/site-rebuild-with-svelte/theme-simon.jpg" alt="Theme 2010-2013"></dialog>
+<h2>Theme until 2010</h2>
+<button class="lightbox"><img src="https://mdvanes.github.io/mdworld-simon/sites/default/files/images/vorig_design.jpg" alt="Theme until 2010"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Theme until 2010</h1>
+    <div><button>✕</button></div></div>
+  <img src="https://mdvanes.github.io/mdworld-simon/sites/default/files/images/vorig_design.jpg" alt="Theme until 2010"></dialog></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/site-rebuild-with-svelte">{"status":200,"statusText":"","headers":{},"body":"\"2023-05-19-site-rebuild-with-svelte\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>On Reactive</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="There are a lot of terms in webdevelopment that have some connection to the word “reactive”. I found myself mixing them up, so I want to clarify it here. 
+
+For the sake of simplicity I will classify libraries &amp; frameworks as a “library” and anything..."><meta property="og:url" content="https://mdworld.nl//on-reactive">
+
+    
+
+    <meta property="og:title" content="On Reactive">
+
+    <meta property="og:description" content="There are a lot of terms in webdevelopment that have some connection to the word “reactive”. I found myself mixing them up, so I want to clarify it here. 
+
+For the sake of simplicity I will classify libraries &amp; frameworks as a “library” and anything...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>On Reactive</h1>
+  <p class="meta svelte-191nhos"><span>Published: 29-11-2014</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>There are a lot of terms in webdevelopment that have some connection to the word “reactive”. I found myself mixing them up, so I want to clarify it here. </p>
+<p>For the sake of simplicity I will classify libraries &amp; frameworks as a “library” and anything conceptual as a “paradigm”.</p>
+<h2>Reactive Programming</h2>
+<p>type: <span class="paradigm svelte-crkwgr">paradigm</span> | url: <a href="http://www.reactivemanifesto.org" rel="nofollow">http://www.reactivemanifesto.org</a></p>
+<p>A modern software architecture that fits the current demand for real-time updates. Quote from the Reactive Manifesto: “We want systems that are Responsive, Resilient, Elastic and Message Driven. … Systems built as Reactive Systems are more flexible, loosely-coupled and scalable.” This is all explained in great detail in the manifesto.</p>
+<h2>Functional Reactive Programming</h2>
+<p>type: <span class="paradigm svelte-crkwgr">paradigm</span> | <a href="http://engineering.silk.co/post/80056130804/reactive-programming-in-javascript" rel="nofollow">Read more</a></p>
+<p>Functional Reactive Programming (FRP) is a way to do reactive programming using concepts from functional programming, such as map, reduce and filter. <a href="http://silk.co" rel="nofollow">Silk</a> explains FRP as ”[something that] allows us to declaratively set up bindings between data in different parts of our product that keep in sync automatically”, making it a way to handle maintainability issues. In short, updating “reactive” variables will also update their values where used in the DOM. Silk has a reactive jQuery plugin which illustrates this quite elegantly. Taken from their site:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">var header = new Reactive(&quot;initial string&quot;);
+$(&quot;h1&quot;).first().rText(header);
+
+// Setting the reactive value now automatically updates
+// the text contents of our header element:
+header.set(&quot;New Header Text!&quot;);</code><!-- HTML_TAG_END --></pre>
+<p>I feel this can be compared with two-way binding in JavaScript MVCs.</p>
+<p>Also Jafar Husain from Netflix, with 6 years of FRP experience, has an <a href="https://www.youtube.com/watch?v=XRYN2xt11Ek" rel="nofollow">interesting presentation</a> bringing many of the concepts in this article together.</p>
+<h2>React</h2>
+<p>type: <span class="library svelte-crkwgr">library</span> | url: <a href="http://facebook.github.io/react/" rel="nofollow">http://facebook.github.io/react/</a></p>
+<p>Short version: Facebook’s MVC implementation like Angular is Google’s MVC implementation.</p>
+<p>Focused on the UI (the “View” in MVC). Used on Facebook.com and Instagram.com. Fast because of the use of a virtual DOM and it can be run server-side too.</p>
+<p>The use of JSX is optional. JSX is a syntax for using pseudo HTML in JavaScript, more or less like HTML templating. React offers the JSXTransformer library to enable JSX support in JavaScript.</p>
+<h2>Ractive.js</h2>
+<p>type: <span class="library svelte-crkwgr">library</span> | url: <a href="http://www.ractivejs.org" rel="nofollow">http://www.ractivejs.org</a></p>
+<p>Short version: A simpeler MVC than Angular.</p>
+<p>The learning curve of Angular is quite high. In contrast Ractive.js is designed to be as simple as possible. It was created at theguardian.com and it uses <a href="https://github.com/janl/mustache.js" rel="nofollow">Mustache templates</a>.</p>
+<p>These blog posts really goes in depth about Ractive.js <a href="http://blog.ractivejs.org/posts/whats-the-difference-between-react-and-ractive/" rel="nofollow">vs React</a> and <a href="http://blog.ractivejs.org/posts/whats-the-difference-between-angular-and-ractive/" rel="nofollow">vs Angular</a></p>
+<h2>Reactive Extensions (a.k.a. RxJS)</h2>
+<p>type: <span class="library svelte-crkwgr">library</span> | url: <a href="http://reactive-extensions.github.io/RxJS/" rel="nofollow">http://reactive-extensions.github.io/RxJS/</a></p>
+<p>Short version: Observables + LINQ + Schedulers, Library for reactive programming in JS.</p>
+<p>Reactive extensions exist for several platforms and RxJs is the implementation for JavaScript. The RxJs is incredibly abstract:</p>
+<p>“Using RxJs, developers represent asynchronous data streams with Observables, query asynchronous data streams using LINQ operators, and parameterize the concurrency in the asynchronous data streams using Schedulers.”</p>
+<p>It is modeled after LINQ, which is part of Microsoft .NET and is used for native data querying.</p>
+<p>My understanding is that RxJs goes beyond Promises, because it combines Promises, callbacks, DOM input, web workers (threads in JS), and web sockets.</p>
+<p>For clarification I tried to find a compelling use case. In theory, this would be anything with events, no matter if it is drag &amp; drop or AJAX calls. An example from their site is an autocomplete that doesn’t flood the backend with request because of the reactive programming paradigm. See the <a href="http://jsfiddle.net/mattpodwysocki/AL8Mj/" rel="nofollow">autocomplete example</a> on the <a href="https://github.com/Reactive-Extensions/RxJS/tree/master/examples" rel="nofollow">RxJS examples pages</a>.</p>
+<h2>Flapjax</h2>
+<p>type: <span class="language svelte-crkwgr">language</span> | url: <a href="http://www.flapjax-lang.org" rel="nofollow">http://www.flapjax-lang.org</a></p>
+<p>Short version: Functional Reactive Programming implementation in JavaScript</p>
+<p>It has been around since 2006, and the site looks really outdated. Fortunally, there are many such initiatives at the moment, in different stages of implementation:</p>
+<ul><li><a href="http://baconjs.github.io/" rel="nofollow">Bacon.js</a> The site shows this simple example of a counter implemented with Bacon.js. It interprets the data as a stream of clicks on the up or down button:</li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">var up   = $(&#39;#up&#39;).asEventStream(&#39;click&#39;);
+var down = $(&#39;#down&#39;).asEventStream(&#39;click&#39;);
+
+var counter =
+  // map up to 1, down to -1
+  up.map(1).merge(down.map(-1))
+  // accumulate sum
+    .scan(0, function(x,y) &#123; return x + y &#125;);
+
+// assign observable value to jQuery property text
+counter.assign($(&#39;#counter&#39;), &#39;text&#39;);</code><!-- HTML_TAG_END --></pre>
+<ul><li><a href="http://proactjs.github.io/" rel="nofollow">ProAct.js</a></li>
+<li><a href="http://pozadi.github.io/kefir/" rel="nofollow">Kefir.js</a></li></ul>
+<h2>Functional JavaScript</h2>
+<p>type: <span class="paradigm svelte-crkwgr">paradigm</span></p>
+<p>Short version: implementation of functional programming in JavaScript</p>
+<p>The idea is that functional programming should make larger projects easier to understand. Books have been written on why you should want this. <a href="http://eloquentjavascript.net/1st_edition/chapter6.html" rel="nofollow">Literally</a>, <a href="http://www.functionaljavascript.com/" rel="nofollow">books</a>. There is also a really neat node based <a href="https://github.com/timoxley/functional-javascript-workshop" rel="nofollow">workshop, by timoxley</a>. This workshop uses no external libraries.</p>
+<h2>LoDash</h2>
+<p>type: <span class="library svelte-crkwgr">library</span> | url: <a href="https://lodash.com" rel="nofollow">https://lodash.com</a></p>
+<p>According to the site, it is a drop-in replacement for <a href="http://underscorejs.org/" rel="nofollow">Underscore</a>. Both are libraries with helpers for functional programming. They add functions for typical FP concepts like e.g. map, reduce, and filter. According to the long list of features “not in Underscore” on the LoDash site, it might be considered the better alternative.</p>
+<p>Alternative libraries:</p>
+<ul><li><a href="http://danieltao.com/lazy.js/" rel="nofollow">Lazy.js</a>, adding lazy evaluation. Actively under development.</li>
+<li><a href="http://osteele.com/sources/javascript/functional/" rel="nofollow">Functional Javascript</a>, last updated in 2007.</li></ul>
+<h2>Real-time web</h2>
+<p>type: <span class="paradigm svelte-crkwgr">paradigm</span></p>
+<p>Short version: pushing information from the server to the client</p>
+<p>Any combination of libraries, technologies or practices that allow server-side push of information to the browser instead of relying on client-side polling. It’s basically the new name for the <a href="http://en.wikipedia.org/wiki/Comet_%28programming%29" rel="nofollow">Comet</a> model of programming. By far the most obvious example is <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/" rel="nofollow">web sockets</a>, which is <a href="http://caniuse.com/#feat=websockets" rel="nofollow">widely supported (e.g. IE 10+)</a>. I made a <a href="https://github.com/mdvanes/mdworld-stox" rel="nofollow">demo for web sockets</a> implemented in Node recently, but it is based on a earlier implementation in PHP that I did somewhere in March 2013. There are plenty of frameworks that make real-time web easier to develop with:</p>
+<ul><li><a href="https://www.firebase.com/" rel="nofollow">Firebase</a>, web app framework that allows three-way binding when <a href="https://www.firebase.com/docs/web/libraries/angular/index.html" rel="nofollow">combined with e.g. Angular</a>. This means it syncs database updates straight to the browser.</li>
+<li><a href="https://pusher.com" rel="nofollow">Pusher</a>, multi platform server side and client side library providing plenty of documentation for implementing common real-time applications, like push notification or a chat client. Provides standardized fallbacks for web sockets.</li></ul>
+<h2>Responsive/Adaptive design</h2>
+<p>type: <span class="paradigm svelte-crkwgr">paradigm</span> | <a href="http://www.liquidapsive.com/" rel="nofollow">Read more</a></p>
+<p>Short version: has nothing to do with reactive, but it sounds like it…</p>
+<p>I feel that I should mention this because the first time I heard about reactive, I assumed it classified as a design method, like responsive or adaptive design. It obviously has nothing to do with design, but to clarify:</p>
+<ul><li>responsive design is a set of liquid designs, one for each breakpoint.</li>
+<li>adaptive design is a set of static designs, one for each breakpoint. E.g. the current design of mdworld.nl is adaptive. Try changing the window width from 700px to 900px, 1000px, 1300px, and 1700px.</li></ul></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/on-reactive">{"status":200,"statusText":"","headers":{},"body":"\"2014-11-29-on-reactive\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

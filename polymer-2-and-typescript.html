@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Polymer 2 and TypeScript</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="For reasons beyond my control I’m working with
+Polymer 2 at the moment. Although the idea of web components is great, the choice for HTML imports that comes with
+Polymer 2 makes integration into a modern development stack cumbersome, as will become..."><meta property="og:url" content="https://mdworld.nl//polymer-2-and-typescript">
+
+    
+
+    <meta property="og:title" content="Polymer 2 and TypeScript">
+
+    <meta property="og:description" content="For reasons beyond my control I’m working with
+Polymer 2 at the moment. Although the idea of web components is great, the choice for HTML imports that comes with
+Polymer 2 makes integration into a modern development stack cumbersome, as will become...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Polymer 2 and TypeScript</h1>
+  <p class="meta svelte-191nhos"><span>Published: 09-12-2017</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>For <a href="../polymer2-redux/">reasons beyond my control</a> I’m working with
+Polymer 2 at the moment. Although the idea of web components is great, the choice for HTML imports that comes with
+Polymer 2 makes integration into a modern development stack cumbersome, as will become clear soon. Also, HTML
+imports are not widely supported by browsers and although polyfills exist, only <a href="https://caniuse.com/#search=html%20imports" rel="nofollow">Chrome (surprise!)</a>
+will have native support for the foreseeable future.</p>
+<p>Using TypeScript seems like a good choice, because static typing helps prevent runtime errors. Additionally it would be a
+good opportunity to try out the <a href="https://github.com/code-star/scala-ts-interfaces" rel="nofollow">Scala-TS-interfaces project</a> by my
+colleagues, that can generate TypeScript from a Scala domain model. Unfortunately, adding TypeScript to a Polymer 2
+development stack proves to be difficult, whereas using it with Polymer 3 seems trivial. Polymer 3 is currently in
+preview so it is not a viable option for me for the moment, but it will exchange HTML imports for ES6 Modules. This will
+make integrating it into a modern development stack much easier. An <a href="https://github.com/mdvanes/polymer3-typescript" rel="nofollow">example</a>
+already exists, by <a href="https://github.com/pferretti" rel="nofollow">Paolo Ferretti</a> and follows normal conventions for a TypeScript project.</p>
+<p>If you’re adventurous, don’t need any <a href="https://www.webcomponents.org/" rel="nofollow">existing Polymer 2 elements</a> and don’t need to
+run production; stop reading here and use Polymer 3.
+If you need Polymer 2 read on, but be warned that it won’t be pretty.</p>
+<p><strong>TL;DR to use TypeScript with Polymer 2 use <a href="https://github.com/mdvanes/typescript-batch-compiler" rel="nofollow">typescript-batch-compiler</a> or even better <a href="https://github.com/Draccoz/twc" rel="nofollow">twc</a>.</strong></p>
+<h2>Webpack</h2>
+<p>For this experiment I will use my existing Polygram project and the result will be available in the <a href="https://github.com/mdvanes/polygram/tree/TypeScript" rel="nofollow">TypeScript branch</a>.</p>
+<p>The first challenge is to use Webpack with Polymer 2. Although not strictly necessary for TypeScript compilation, it would
+make sense for importing HTML as modules. Fortunately, <a href="https://www.youtube.com/playlist?list=PLOU2XLYxmsII5c3Mgw6fNYCzaWrsM3sMN" rel="nofollow">Rob Dodson himself</a> wrote an
+article <a href="http://robdodson.me/how-to-use-polymer-with-webpack/" rel="nofollow">How to use Polymer with Webpack</a>. It even mentions TypeScript!
+The article introduces the Webpack loader <a href="https://github.com/webpack-contrib/polymer-webpack-loader" rel="nofollow">https://github.com/webpack-contrib/polymer-webpack-loader</a> and
+explains how it extracts the JavaScript from the HTML of Polymer elements and eventually packages everything into one
+JavaScript file. I was basically able to copy the webpack.config.js and index.ejs from his demo project, place it into Polygram and that would compile. I moved my
+<a href="https://github.com/mdvanes/polygram/tree/TypeScript" rel="nofollow">custom elements</a> from the root of the project to the src dir and I had
+to modify the paths to the bower_components and it would basically work.</p>
+<p>The most important exception is Redux, the redux-mixin.html can’t resolve the PolymerRedux.html dependency (in bower_components/polymer-redux/polymer-redux.html).
+The polymer-webpack-loader should resolve this, but runtime it logs <code>Uncaught ReferenceError: PolymerRedux is not defined</code>.
+E.g. for src/polygram-app.html, the loader seems to import the HTML elements that are used in the <code>template</code> element,
+but not the JavaScript variables that are used in the <code>script</code> element.</p>
+<p>The PolymerRedux code is distributed as JavaScript wrapped in a <code>script</code> tag in mainly one file, so it would be easy to
+extract it to a JavaScript file. Or even to import <code>polymer-redux/src/index.js</code> instead of <code>polymer-redux/polymer-redux.html</code>
+(although index.js is uncompiled and misses external dependencies that are not installed in bower_components because they are development dependencies of polymer-redux).
+For now, I just comment out the Redux dependencies.</p>
+<p>It is already clear now that the result from Webpack will be one huge bundle.js that inlines all JavaScript and HTML
+dependencies. This means using the <a href="https://www.polymer-project.org/2.0/toolbox/prpl" rel="nofollow">PRPL pattern</a> will not be possible
+in this workflow, nor will it be possible to have standalone Polymer components and the accompanying Polymer demo pages.</p>
+<h2>Adding ts-loader</h2>
+<p>Normally, to migrate a Webpack project from JavaScript to TypeScript, it would be enough to add the <a href="https://github.com/TypeStrong/ts-loader" rel="nofollow">ts-loader</a>
+to the Webpack config and to rename the JavaScript files to TypeScript files.</p>
+<p>So I started with changing the extension for the bootstrapping index.js and adding .ts as a resolved extension:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">// webpack.config.js</span>
+<span class="token operator">...</span>
+<span class="token literal-property property">entry</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'src/index.ts'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token operator">...</span>
+<span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.ts'</span><span class="token punctuation">,</span> <span class="token string">'.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token operator">...</span></code><!-- HTML_TAG_END --></pre>
+<p>And adding this rule:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">// webpack.config.js</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.ts?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span> <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'ts-loader'</span> <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>And creating a tsconfig.json:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token punctuation">&#123;</span>
+  <span class="token string-property property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token string-property property">"sourceMap"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>Everything still compiles, but the JavaScript for the Polymer components is embedded in the HTML and therefore ignored
+by the new rule with the ts-loader.</p>
+<p>Adding the ts-loader to the rule for the HTML files breaks compilation:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">// webpack.config.js</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.html$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span> <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'babel-loader'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span> <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'ts-loader'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token comment">// &lt;--</span>
+        <span class="token punctuation">&#123;</span> <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'polymer-webpack-loader'</span> <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span></code><!-- HTML_TAG_END --></pre>
+<p>Even without changing any of the code itself, compilation fails with:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">ERROR in ./src/polygram-app.html
+Module build failed: Error: Could not find file: &#39;/home/me/polygram/src/polygram-app.html&#39;.</code><!-- HTML_TAG_END --></pre>
+<p>Well, that just doesn’t look healthy. I filed <a href="https://github.com/webpack-contrib/polymer-webpack-loader/issues/64" rel="nofollow">a bug</a>
+and almost 2 months after my report the maintainers closed the issue commenting that the root cause is with Webpack, so I
+don’t see this will be resolved any time soon.</p>
+<p>For now, I will try to work around it by extracting the TypeScript code to a separate file.</p>
+<h3>Workaround for TypeScript compilation in a Polymer element</h3>
+<p>After removing the <code>ts-loader</code> line from the HTML rule in the webpack.config.js I set out to extract the TypeScript to a
+separate file so it can be compiled with the rule that matches ts files.</p>
+<p>Roughly, the main entry point for the Polymer elements <code>polygram-app.html</code> contains:</p>
+<pre class="language-html"><!-- HTML_TAG_START --><code class="language-html">// imports
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>import<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../bower_components/polymer/polymer-element.html<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>import<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polygram-details.html<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>import<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polygram-searchbox.html<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dom-module</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polygram-app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token comment">&lt;!-- Style --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">include</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>iron-flex iron-flex-alignment<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+
+    <span class="token comment">&lt;!-- Markup --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>layout vertical<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token comment">// Script</span>
+    <span class="token keyword">import</span> format <span class="token keyword">from</span> <span class="token string">'date-fns/format'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">PolygramApp</span> <span class="token keyword">extends</span> <span class="token class-name">Polymer<span class="token punctuation">.</span>Element</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">is</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">'polygram-app'</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+      <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+          <span class="token literal-property property">today</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            <span class="token literal-property property">type</span><span class="token operator">:</span> String<span class="token punctuation">,</span>
+            <span class="token function-variable function">value</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+              <span class="token keyword">return</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'MM/DD/YYYY'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    window<span class="token punctuation">.</span>customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span>PolygramApp<span class="token punctuation">.</span>is<span class="token punctuation">,</span> PolygramApp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dom-module</span><span class="token punctuation">></span></span></code><!-- HTML_TAG_END --></pre>
+<p>Since I know the <code>import</code> statement in the script tag works, I can use this to my advantage. Lets create a companion
+TypeScript file for polygram-app.html named PolygramApp.ts.</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token comment">// PolygramApp.ts</span>
+<span class="token keyword">import</span> format <span class="token keyword">from</span> <span class="token string">'date-fns/format'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">PolygramApp</span> <span class="token keyword">extends</span> <span class="token class-name">Polymer</span><span class="token punctuation">.</span>Element <span class="token punctuation">&#123;</span>
+  <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token keyword">is</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">'polygram-app'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+      today<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+        <span class="token function-variable function">value</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">return</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'MM/DD/YYYY'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>It would be possible to import PolygramApp.ts with <code>&lt;script src=&quot;PolygramApp.ts&quot;&gt;&lt;/script</code>, but I like the standard ES6 module structure
+of PolygramApp.ts without the added responsibility of registering itself to customElements, so I import it like this:</p>
+<pre class="language-html"><!-- HTML_TAG_START --><code class="language-html"><span class="token comment">&lt;!-- polygram-app.html --></span>
+...
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dom-module</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polygram-app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token comment">// Script</span>
+    <span class="token keyword">import</span> PolygramApp <span class="token keyword">from</span> <span class="token string">'./polygramApp'</span><span class="token punctuation">;</span>
+    window<span class="token punctuation">.</span>customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span>PolygramApp<span class="token punctuation">.</span>is<span class="token punctuation">,</span> PolygramApp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dom-module</span><span class="token punctuation">></span></span></code><!-- HTML_TAG_END --></pre>
+<p>The result is a failed compilation with 3 types of errors. Let’s deal with them one by one.</p>
+<h3>1. Failing accessors</h3>
+<p>The <code>is</code> and <code>properties</code> getters require a specifically set target ECMAScript version, the compilation error is:
+<code>error TS1056: Accessors are only available when targeting ECMAScript 5 and higher</code>. It surprises me that the default
+ES target is ES3, but it’s not a problem to use ES5 or even ESNext here, because the babel-loader will transpile it back to ES5.</p>
+<p>Adding <code>&quot;target&quot;: &quot;ESNext&quot;</code> to compilerOptions in the tsconfig.json fixes this error.</p>
+<h3>2. Failing Polymer import</h3>
+<p><code>Polymer</code> can’t be found for the <code>extends</code>. This is the most difficult of these errors to solve, because it is caused by the preferred module
+architecture of Polymer 2: because HTML imports are used, it is not possible to use <code>import Polymer from &#39;../bower_components/polymer/polymer-element.html&#39;</code>
+because this polymer-element does not export <code>Polymer</code> as an ES6 module. The webpack-polymer-loader can resolve HTML
+imports, but using <code>import &#39;../bower_components/polymer/polymer-element.html&#39;</code> results in an <code>error TS2304: Cannot find name &#39;Polymer&#39;</code>.</p>
+<p>For the moment, I’m just removing the <code>extends Polymer.Element</code> from PolygramApps.ts and <code>window.customElements.define(PolygramApp.is, PolygramApp);</code> from polygram-app.html.</p>
+<h3>3. Failing date-fns import</h3>
+<p>To be able to continue resolving the compilation errors, I add a log statement to polygram-app.html:</p>
+<pre class="language-html"><!-- HTML_TAG_START --><code class="language-html"><span class="token comment">&lt;!-- polygram-app.html --></span>
+...
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dom-module</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polygram-app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token comment">// Script</span>
+    <span class="token keyword">import</span> PolygramApp <span class="token keyword">from</span> <span class="token string">'./polygramApp'</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>PolygramApp<span class="token punctuation">.</span>properties<span class="token punctuation">.</span>today<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dom-module</span><span class="token punctuation">></span></span></code><!-- HTML_TAG_END --></pre>
+<p>The import of date-fns originally failed in the TypeScript compilation with
+<code>error TS1192: Module &#39;&#39;date-fns/format&#39;&#39; has no default export.</code> but at this point that has two different behaviors:</p>
+<ul><li>The IDE warns <code>TS2307 Cannot find module date-fns</code></li>
+<li>Compilation succeeds, but this error is logged in the browser: <code>Uncaught TypeError: format_1.default is not a function(…)</code></li></ul>
+<p>I first thought that this was caused by missing typings for the date-fns library, so I tried
+<code>npm install @types/date-fns</code> but this logs that date-fns actually provides typings.</p>
+<p>Eventually I was able to fix the Uncaught TypeError by changing the import in PolygramApp.ts from</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">import</span> format <span class="token keyword">from</span> <span class="token string">'date-fns/format'</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>to</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> format <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'date-fns'</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>And the IDE warning by adding <code>&quot;moduleResolution&quot;: &quot;node&quot;</code> to the compilerOptions in tsconfig.json.</p>
+<p>At this point, although nothing is rendered, because of the added log statement the current date is logged to the browser console.</p>
+<h3>Failing Polymer import, continued</h3>
+<p>Now the import succeeds and it is clear that the TypeScript compiler correctly processes PolygramApp.ts, it is time to
+try to fix the import of the <code>Polymer</code> module in PolygramApp.ts.</p>
+<p>A possible workaround will be to not try to import HTML imports in the TypeScript file, but instead to supply those dependencies
+through the HTML that is importing the TypeScript file. To do this, I change the respective files to:</p>
+<pre class="language-html"><!-- HTML_TAG_START --><code class="language-html"><span class="token comment">&lt;!-- polygram-app.html --></span>
+...
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dom-module</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polygram-app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token comment">// Script</span>
+    <span class="token keyword">import</span> PolygramAppFactory <span class="token keyword">from</span> <span class="token string">'./PolygramApp'</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> PolygramApp <span class="token operator">=</span> PolygramAppFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>Polymer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    window<span class="token punctuation">.</span>customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span>PolygramApp<span class="token punctuation">.</span>is<span class="token punctuation">,</span> PolygramApp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dom-module</span><span class="token punctuation">></span></span></code><!-- HTML_TAG_END --></pre>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token comment">// PolygramApp.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> format <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'date-fns'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> label<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'Current Date: '</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span>Polymer<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token keyword">class</span> <span class="token class-name">PolygramApp</span> <span class="token keyword">extends</span> <span class="token class-name">Polymer</span><span class="token punctuation">.</span>Element <span class="token punctuation">&#123;</span>
+    <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token keyword">is</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">return</span> <span class="token string">'polygram-app'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+        today<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+          type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+          <span class="token function-variable function">value</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> label <span class="token operator">+</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span> create <span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Now everything compiles without errors and the custom elements are rendered again!</p>
+<p>Note here that I also added a <code>string</code> type to <code>const label</code> to see if typings work.</p>
+<h3>Re-enabling Redux</h3>
+<p>Earlier, Redux was disabled to test Webpack. It was failing with the runtime error <code>Uncaught ReferenceError: PolymerRedux is not defined</code> To re-enable it, I convert the <code>polymer-redux/polymer-redux.html</code> from
+bower_components to a local PolymerRedux.js, by just removing the <code>script</code> tags.</p>
+<p>Because redux-mixin.html, action.html, and reducer.html actually are already JavaScript wrapped in <code>script</code> tags, I just convert
+them to TypeScript files, for example:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token comment">// ReduxMixin.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span>combineReducers<span class="token punctuation">,</span> compose<span class="token punctuation">,</span> createStore<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> PolymerRedux <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'exports-loader?PolymerRedux!./PolymerRedux'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">...</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> ReduxMixin <span class="token operator">=</span> <span class="token function">PolymerRedux</span><span class="token punctuation">(</span>reduxStore<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>To use it in PolygramApp.ts, it can now be imported like a normal ES6 module:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token comment">// PolygramApp.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> format <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'date-fns'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> label<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'Current Date: '</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span>ReduxMixin<span class="token punctuation">,</span> reduxStore<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./ReduxMixin'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span>Polymer<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">class</span> <span class="token class-name">PolygramApp</span> <span class="token keyword">extends</span> <span class="token class-name">ReduxMixin</span><span class="token punctuation">(</span>Polymer<span class="token punctuation">.</span>Element<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token keyword">is</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token keyword">return</span> <span class="token string">'polygram-app'</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Added Redux code here</span>
+            <span class="token operator">...</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token function">ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Added Redux code here</span>
+            <span class="token operator">...</span>
+        <span class="token punctuation">&#125;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span> create <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>After making similar modifications for polygram-searchbox, the Redux events work again as before introducing TypeScript.</p>
+<h2>Importing a global variable from HTML</h2>
+<p>At this point PolymerRedux is loaded from a custom PolymerRedux.js that I made in the previous step by removing the <code>&lt;script&gt;</code>
+tags from the file in bower_components. Although this works, it would be better to use the file in bower_components
+directly because it will be easier to handle updates to this external package.</p>
+<p>Currently I import the custom PolymerRedux.js in state/ReduxMixin.ts with:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> PolymerRedux <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'exports-loader?PolymerRedux!./PolymerRedux'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>To load the HTML from the bower_components, I expect to have to use the polymer-webpack-loader to extract the JavaScript
+from the <code>script</code> tags:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> PolymerRedux <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'exports-loader?PolymerRedux!polymer-webpack-loader!../../bower_components/polymer-redux/dist/polymer-redux.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>This fails to compile with the message that PolymerRedux is undefined, so I add the <a href="https://github.com/ianwalter/debug-loader" rel="nofollow">debug-loader</a> to
+investigate what the result of each step looks like:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> PolymerRedux <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'exports-loader?PolymerRedux!polymer-webpack-loader!debug-loader?id=raw!../../bower_components/polymer-redux/dist/polymer-redux.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Thanks to debug-loader it is immediately clear that already before going into the polymer-webpack-loader the <code>script</code> tags have
+been stripped. Just using require without any loaders turns something likes this <code>&lt;script&gt;foo()&lt;/script&gt;</code> into <code>foo()</code>
+and webpack-polymer-loader is not needed in this case. I do think this only works when the file is completely self
+contained and does not have dependencies with other Polymer HTML files.</p>
+<p>This is the final working import:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> PolymerRedux <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'exports-loader?PolymerRedux!../../bower_components/polymer-redux/dist/polymer-redux.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<h2>Linting</h2>
+<p>Although there is a <a href="https://github.com/Polymer/polymer-linter" rel="nofollow">polymer-linter</a>, it is <a href="https://github.com/Polymer/polymer-linter#use-with-other-tools" rel="nofollow">advised</a> to
+use Polymer Linter combined with other linters, and an obvious choice is TSLint.</p>
+<p>The way that TSLint is configured with Webpack means that it will only lint TypeScript that is not embedded in HTML:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">// webpack.config.js</span>
+<span class="token keyword">new</span> <span class="token class-name">TSLintPlugin</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'./src/**/*.ts'</span><span class="token punctuation">]</span> <span class="token comment">// So, this requires none of the TS to be inline in HTML?</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Before I started with this experiment I thought this might be a problem. But now almost all script has been extracted to
+separate TypeScript files anyway, so this works quite well.</p>
+<p>Of course it is also still possible to run TSLint manually for a file, e.g. <code>./node_modules/.bin/tslint --config tslint.json polygram-marvel-details.ts</code></p>
+<p>It is still required to run <code>polymer lint</code> manually. As far as I know there is no integration for Webpack yet.</p>
+<h2>Decorators</h2>
+<p>I want to see if I can use <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841" rel="nofollow">ES decorators</a>,
+because decorators conceptually fit with the Mixin pattern used in Polymer
+for e.g. <code>class MyElement extends ReduxMixin(Polymer.Element)</code>. It would be tidy if we could write this as a decorator,
+especially if more mixins would need to be combined:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">ReduxMixin</span></span>
+<span class="token keyword">class</span> <span class="token class-name">MyElement</span> <span class="token keyword">extends</span> <span class="token class-name">Polymer</span><span class="token punctuation">.</span>Element
+<span class="token operator">...</span></code><!-- HTML_TAG_END --></pre>
+<p>As a test, I just add an <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841" rel="nofollow">example decorator</a>
+to the class in polygram-details.ts:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript">    @<span class="token keyword">readonly</span>
+    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// This works, but prepends a polyfill to the output</span>
+        <span class="token keyword">return</span> <span class="token string">'just testing a decorator'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>And in the same file, but outside the class, the definition of the decorator:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">function</span> <span class="token keyword">readonly</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  descriptor<span class="token punctuation">.</span>writable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> descriptor<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>The compiler fails with:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">error TS1219: Experimental support for decorators is a feature that is subject to change in a future release. Set the &#39;experimentalDecorators&#39; option to remove this warning.</code><!-- HTML_TAG_END --></pre>
+<p>This flag can be added to the compilerOptions section of the tsconfig.json: <code>&#39;experimentalDecorators&#39;: true</code>. The
+compilation now succeeds, but prepends a small polyfill for <code>decorator</code> to the output. Take this into account when using
+decorator in many files, because it will cause an overhead that might be avoided by using a third party library that is
+imported globally.</p>
+<h2>App vs Element</h2>
+<p>It is one thing to compile Typescript for a Polymer app, but another thing to use TypeScript for reusable Polymer components.</p>
+<p>The next step will be to compile the Polymer components in this test project separately. As a result, each converted
+component should both be loaded into its own <a href="https://github.com/PolymerElements/iron-component-page" rel="nofollow">demo page</a> and to be composed into a Polymer app.</p>
+<p>The demo pages should be accessible by running <code>polymer serve</code>, conform the normal Polymer workflow.</p>
+<p>When just running a Webpack build for the current project with <code>./node_modules/.bin/webpack --config webpack.config.js</code>, it will build a
+<code>dist</code> dir containing amongst others an index.html and a bundle.js. This is a standalone app, but this would not be a good workflow to
+distribute a Polymer component because:</p>
+<ul><li>the index.html is a complete HTML document, not just a <code>dom-module</code></li>
+<li>the bundle.js is one huge JavaScript blob that contains not only the compiled JavaScript for the component, but also all templates, TypeScript, Webpack and Polymer polyfills and libraries (like lodash in this case)</li></ul>
+<p>The polyfills and libraries need to be kept separate, so that they can be loaded once per project instead of once for every component.
+The bundle.js is already 2.8MB in size (unminified) / 347kB (minified).</p>
+<p>Would it be possible to make a Polymer component that uses the <code>&lt;script src=&quot;foo.js&quot;&gt;</code> style import and then do a “naive”
+compilation from foo.ts to foo.js? Let’s first make a minimal example where the JavaScript is extracted from an Polymer
+component:</p>
+<ul><li>Using <code>/polygram-details.html</code> (this is the original, that the TypeScript+Webpack version in /src/ was based on) and <code>/demo/polygram-details</code> (already importing /polygram-details)</li>
+<li>Do not run webpack, but just <code>polymer serve</code> and test the demo page</li>
+<li>Replace <code>&lt;script&gt;... code ...&lt;/script&gt;</code> by <code>&lt;script src=&quot;polygram-details.js&quot;&gt;&lt;/script&gt;</code>, extract the JavaScript to
+polygram-details.js and test the demo page again: this works.</li></ul>
+<p>Now to TypeScript:</p>
+<ul><li>Rename <code>polygram-detail.js</code> but leave the reference in <code>polygram-details.html</code> to point to the JavaScript version: <code>&lt;script src=&quot;polygram-details.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>The package <code>typescript</code> was already installed as a dependency, so use <code>tsc</code>: <code>./node_modules/.bin/tsc polygram-details.ts</code>.
+This gives errors, but does generate code. The resulting code does not run.</li></ul>
+<p>The first errors are:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">polygram-details.ts(8,31): error TS2304: Cannot find name &#39;Polymer&#39;.
+polygram-details.ts(33,14): error TS2339: Property &#39;_searchResult&#39; does not exist on type &#39;PolygramDetails&#39;.
+polygram-details.ts(35,18): error TS2339: Property &#39;_searchIAUrl&#39; does not exist on type &#39;PolygramDetails&#39;.
+polygram-details.ts(42,18): error TS2339: Property &#39;_searchResult&#39; does not exist on type &#39;PolygramDetails&#39;.</code><!-- HTML_TAG_END --></pre>
+<p>Adding <code>declare const Polymer: any;</code> fixes these 4 errors. It tells TypeScript a global variable <code>Polymer</code> can be expected.</p>
+<p>This leaves the following errors:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">polygram-details.ts(9,16): error TS1056: Accessors are only available when targeting ECMAScript 5 and higher.
+polygram-details.ts(13,16): error TS1056: Accessors are only available when targeting ECMAScript 5 and higher.</code><!-- HTML_TAG_END --></pre>
+<p>The current compilation seems to ignore the tsconfig.json, because a similar error was solved earlier by
+adding <code>&quot;target&quot;: &quot;ESNext&quot;</code> in the config. The target can be specified with a flag: <code>./node_modules/.bin/tsc --target ES6 polygram-details.ts</code>.
+This runs without errors and works in the browser!</p>
+<h3>Simple compilation and Webpack</h3>
+<p>This much simpler approach without Webpack seems to provide a more realistic workflow. Can we afford to leave Webpack
+out entirely? Let’s reiterate its purpose:</p>
+<h4>Webpack transpiles to ES5 with Babel</h4>
+<p>As mentioned before we don’t need Babel for transpilation, the TypeScript compiler can be set to ES6 or ES5.</p>
+<h4>Webpack provides a development server with hot module reloading</h4>
+<p>Hot Module Replacement is mainly to ease development, but we can use livereload combined with polyserve instead which would be acceptable for this use case.</p>
+<h4>Webpack handles module bundling</h4>
+<p>We can do without ES6 modules or packaging other resources like images as JavaScript modules, because we already have to
+deal with Polymer Elements as a component platform. We have to distribute the end result as Polymer Elements to be able to add it to the catalog.</p>
+<p>Although Polymer 3 will use ES6 modules, a tool is supposed to become available that can migrate from elements from Polymer 2 to Polymer 3 syntax.</p>
+<p>Without Webpack we lose the module polyfill that is injected per file, which potentially saves a significant size overhead, whilst staying closer to the concept of Polymer Element development.</p>
+<p>Global JavaScript variables from external modules can be made accessible with the <code>declare</code> placeholder, and it is still
+possible to use <code>import</code> to import from <code>node_modules</code>.
+However, when module is set to <code>none</code> in the tsconfig.json, the variable will just be put onto the “global” scope. This is
+not the <em>true</em> global scope, because it is still contained within the Polymer element, so the variable will be on the Polymer
+Element scope, and should not leak to the actual global scope.</p>
+<p><code>Import</code> should still be used with caution: it will lead to code duplication if 2 Polymer+TypeScript elements import the
+same dependency. In that case it would be better to import that dependency via HTML import because the Polymer compiler can deduplicate it.</p>
+<p>Webpack can also be used to package CSS as modules, but for encapsulating CSS in Polymer the
+<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM" rel="nofollow">Shadow DOM</a> can be used. This is actually an
+aspect of web components that is very well executed.</p>
+<h3>Automatic compilation</h3>
+<p>Without Webpack, it is unpractical that for every change to a TypeScript file a manual transformation is needed. Following
+the example in the previous section, each time <code>polygram-details.ts</code> changes, <code>./node_modules/.bin/tsc --target ES6 polygram-details.ts</code>
+must be run. Let’s try to automate this without using Webpack.</p>
+<h4>With tsc</h4>
+<p>First I make a new tsconfig named <code>tsconfig.inline.json</code> for this use case:</p>
+<pre class="language-json"><!-- HTML_TAG_START --><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"sourceMap"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"ES6"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"*.ts"</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>To compile run <code>./node_modules/.bin/tsc -w -p tsconfig.inline.json</code>. The <code>-w</code> flag keeps the process running and watches for
+changes in the included TypeScript files.</p>
+<p>An interesting side-effect occurs. Naturally, each TypeScript file is going to need the <code>declare const Polymer: any;</code>
+declaration as a workaround for the fact that the Polymer dependency can’t be imported (see previous sections). But
+because we now use <code>-p</code>, the project flag, the compiler expects all files share global scope. And the second file
+using <code>declare const Polymer: any;</code> will get an error: <code>Cannot redeclare block-scoped variable &#39;Polymer&#39;</code>. How can we use
+the project flag, without letting the compiler share the global scope between all TypeScript files?</p>
+<p>A workaround would be to create a TypeScript file that just imports/declares all the expected global variables once.
+This would make the code less transparent at best and it might even create other scoping issues.</p>
+<h3>Custom compilation</h3>
+<p>As an alternative let’s try to run compilation with an isolated scope for each TypeScript file. <a href="https://github.com/Microsoft/TypeScript/issues/1516" rel="nofollow">This issue</a>
+explains that this would be possible by supplying a tsconfig.json for each scope. That would be doable for a limited set
+of scopes that is static over time (e.g. a back-end codebase and a front-end codebase in the same project).
+However, it makes no sense from a maintenance standpoint for the current project as it would need a tsconfig.json
+for each Polymer element.</p>
+<p>To be complete, I did try this out. First, set up a base tsconfig that can be inherited:</p>
+<pre class="language-json"><!-- HTML_TAG_START --><code class="language-json"><span class="token comment">// base.json</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"sourceMap"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"ESNext"</span><span class="token punctuation">,</span>
+    <span class="token property">"moduleResolution"</span><span class="token operator">:</span> <span class="token string">"node"</span><span class="token punctuation">,</span>
+    <span class="token property">"experimentalDecorators"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>Now for each Polymer TypeScript file a tsconfig, e.g.:</p>
+<pre class="language-json"><!-- HTML_TAG_START --><code class="language-json"><span class="token comment">// polygram-details.tsconfig.json</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token string">"./base.json"</span><span class="token punctuation">,</span>
+  <span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./polygram-details.ts"</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>It is now possible to compile/watch polygram-details.ts with <code>tsc -w -p polygram-details.tsconfig.json</code>, but it is
+still not possible to compile/watch multiple tsconfigs at <em>the same time</em>.</p>
+<p>In this case it would be better to forget about the watch flag <code>-w</code> altogether and just use <code>npm watch</code> combined with
+<code>tsc [changedfile]</code>. You can’t use a tsconfig.json combined with an input file path for tsc, so all options must be
+supplied as flags: <code>tsc --target ES6 --sourceMap [changedFile]</code>.</p>
+<p>I tried combining this compilation one-liner with a watch script, but I could not get this to work with <a href="https://www.npmjs.com/package/nodemon" rel="nofollow">nodemon</a>,
+<a href="https://www.npmjs.com/package/npm-watch" rel="nofollow">npm-watch</a> or <a href="https://www.npmjs.com/package/watch" rel="nofollow">watch</a>, so I wrote a small script:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">// ts-poly-watch.js, run with: node ts-poly-watch.js</span>
+<span class="token keyword">const</span> watch <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'watch'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> chalk <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'chalk'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> tsc <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'node-typescript-compiler'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+watch<span class="token punctuation">.</span><span class="token function">createMonitor</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">interval</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">monitor</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>chalk<span class="token punctuation">.</span>gray<span class="token punctuation">.</span>bgGreen<span class="token punctuation">.</span><span class="token function">bold</span><span class="token punctuation">(</span><span class="token string">'TS-POLY-WATCH started'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  monitor<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'changed'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">f<span class="token punctuation">,</span> curr<span class="token punctuation">,</span> prev</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> ext <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">extname</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ext <span class="token operator">===</span> <span class="token string">'.ts'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>f <span class="token operator">+</span> <span class="token string">' changed'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      tsc<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">'ES6'</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">sourceMap</span><span class="token operator">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        f
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Now it is possible to watch each TypeScript file and compile it with its scope isolated from the other TypeScript files.</p>
+<h2>twc</h2>
+<p>With <code>ts-poly-watch.js</code> it looks like we finally have an acceptable working environment. I have extracted the script to
+its own project <a href="https://github.com/mdvanes/typescript-batch-compiler" rel="nofollow">typescript-batch-compiler</a> and <a href="https://www.npmjs.com/package/typescript-batch-compiler" rel="nofollow">npm package</a> because
+there is much room for improvement and it will be easier to use in other projects if it is an npm package.</p>
+<p>So are we now done? In fact there is one more thing I want to explore. During the research I ran into <a href="https://github.com/Draccoz/twc" rel="nofollow">twc</a>.
+This is a compiler for <em>TypeScript Web Components</em> and can be used to compile TypeScript classes to Polymer 2 elements.
+Although this sounds like it is similar to my <code>typescript-batch-compiler</code>, here are some preliminary findings:</p>
+<ol><li>It assumes a TypeScript file as the entrypoint: in my setup I still stay close to the Polymer setup with a
+Polymer element (so HTML) that includes a script file. With <code>twc</code> the entrypoint is a TypeScript file that imports an HTML template.
+A great advantage is that this is more like Polymer 3 and also similar to other component driven frameworks
+like React, Vue and Angular. The disadvantage is of course that the style will be foreign to other Polymer developers.</li>
+<li>It’s still very experimental. There is no example in the repo or an explanation of how to set up a basic element in the
+README, but a general approach is outlined <a href="https://github.com/Draccoz/twc/wiki/Creating-a-simple-component" rel="nofollow">on the project wiki</a>
+and examples of twc in a project can be found in <a href="https://github.com/mlisook/generator-polymer-init-twc-starter-kit" rel="nofollow">this generator project</a>.</li></ol>
+<p>With the aforementioned wiki, I take these steps:</p>
+<ul><li>Run <code>twc</code> in a new subdir of the project appropriately named “twc”</li>
+<li>Set up a very basic polygram-twc.ts conforming to the style as outlined in the wiki:</li></ul>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token comment">// polygram-twc.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> CustomElement <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'twc/polymer'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'bower:polymer/polymer-element.html'</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * &#96;online-state&#96;
+ * Lets you select an online state (online or offline) and reflect the change on a host attribute.
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */</span>
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">CustomElement</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">OnlineState</span> <span class="token keyword">extends</span> <span class="token class-name">Polymer</span><span class="token punctuation">.</span>Element <span class="token punctuation">&#123;</span>
+  prop1<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'online-state'</span><span class="token punctuation">;</span>
+
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">&#96;</span><span class="token string">
+          &lt;style>
+            :host &#123;
+              display: block;
+            &#125;
+          &lt;/style>
+          &lt;h2>Hello [[prop1]]!&lt;/h2>
+        </span><span class="token template-punctuation string">&#96;</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<ul><li>Run <code>tsc --init</code> to create a new tsconfig.json in the twc dir. This turns out to be important. When I re-use my existing
+tsconfig.json the build fails with <code>Error: Debug Failure.</code>. This seems to be caused by the line <code>&quot;moduleResolution&quot;: &quot;node&quot;</code>,
+which is not needed for this compilation.</li>
+<li>Add <code>node_modules/twc/types/polymer.decorators.d.ts</code> to the include section of the tsconfig.json, to resolve certain types.</li>
+<li>Build in the twc dir by running <code>../node_modules/.bin/twc polygram-twc.ts</code>.</li>
+<li>A polygram-twc.html is created.</li></ul>
+<p>I also converted the original polygram-details.html (the one with embedded JavaScript) to this format. See the result
+in <a href="https://github.com/mdvanes/polygram/tree/TypeScript/twc" rel="nofollow">the repo for this experiment</a>. When working on this
+conversion, some differences with normal web components become apparent:</p>
+<ul><li>twc auto-injects the registration of the component: <code>customElements.define(PolygramDetails.is, PolygramDetails);</code></li>
+<li><code>import &#39;./polygram-ui-details&#39;;</code> is converted to <code>&lt;link rel=&quot;import&quot; href=&quot;./polygram-ui-details.html&quot;&gt;</code></li>
+<li>the <code>is</code> getter, i.e. this: <code>static get is() { return &#39;polygram-details&#39;; }</code>
+is auto generated from the class name.</li>
+<li>The JSDoc is converted to an HTML comment.</li></ul>
+<p>This syntax uses plain ES modules and is therefore also closer to Polymer 3. Still there are some differences.
+Compare the code for polygram-twc.ts but in <a href="https://www.polymer-project.org/blog/2017-08-23-hands-on-30-preview" rel="nofollow">Polymer 3 syntax</a>:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token comment">// PolymerElement is its own module now, instead of a property of the Polymer namespace. Also, bower is no longer used.</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Element <span class="token keyword">as</span> PolymerElement <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@polymer/polymer/polymer-element'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Aside from inline templates, this syntax can be used too:</span>
+<span class="token comment">//import * as view from './app.template.html';</span>
+
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">OnlineState</span> <span class="token keyword">extends</span> <span class="token class-name">PolymerElement</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Property must be defined in the constructor, but this might be a difference with TypeScript and not Polymer 3.</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>prop1 <span class="token operator">=</span> <span class="token string">'online-state'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// I don't know where the &lt;style> element should go.</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">&#96;</span><span class="token string">&lt;h2>Hello [[prop1]]!&lt;/h2></span><span class="token template-punctuation string">&#96;</span></span><span class="token punctuation">;</span>
+    <span class="token comment">// Or when using an import:</span>
+    <span class="token comment">//return view;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>Although I can’t find any sources, I heard that Polymer 3 would supply an auto converter from (normal) Polymer 2 syntax.
+You could use that converter on the output of twc, so this should not be a reason to avoid twc.</p>
+<h2>Final remarks</h2>
+<p>Unit testing and coverage support when using TypeScript has not been mentioned, but I hope it is clear that it is
+unchanged from a normal Polymer 2 application when using typescript-batch-compiler. You can just use
+<a href="https://github.com/Polymer/web-component-tester" rel="nofollow">WCT</a>), because all components
+are compiled to a state that conforms to a non-TypeScript Polymer 2 situation.</p>
+<p>For the Webpack approach it would be an improvement to see why <code>polymer-webpack-loader</code> is not importing Polymer when
+using <code>import Polymer from &#39;../bower_components/polymer/polymer-element.html&#39;</code>
+or <code>import &#39;../bower_components/polymer/polymer-element.html&#39;</code>.</p>
+<p>It could also be an improvement to add the <a href="https://www.npmjs.com/package/tslint-plugin-prettier" rel="nofollow">prettier</a> plugin to promote a
+consistent coding style. This could be added to TSLint via Webpack, but could also be integrated in the
+typescript-batch-compiler package.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/polymer-2-and-typescript">{"status":200,"statusText":"","headers":{},"body":"\"2017-12-09-polymer-2-and-typescript\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

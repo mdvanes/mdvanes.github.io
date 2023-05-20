@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Discourse on Ubuntu 14.04</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="I wanted to try and use Docker after hearing such great things about it. Since I might want to roll out a decent forum at some point, I wanted to look into installing Discourse. For the moment, this will be done on my desktop.
+
+I start with the..."><meta property="og:url" content="https://mdworld.nl//discourse-ubuntu">
+
+    
+
+    <meta property="og:title" content="Discourse on Ubuntu 14.04">
+
+    <meta property="og:description" content="I wanted to try and use Docker after hearing such great things about it. Since I might want to roll out a decent forum at some point, I wanted to look into installing Discourse. For the moment, this will be done on my desktop.
+
+I start with the...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Discourse on Ubuntu 14.04</h1>
+  <p class="meta svelte-191nhos"><span>Published: 16-11-2014</span>
+  <a href="/" class="pill svelte-191nhos">mypc</a>
+</p>
+  <p>I wanted to try and use <a href="https://www.docker.com/" rel="nofollow">Docker</a> after hearing such great things about it. Since I might want to roll out a decent forum at some point, I wanted to look into installing <a href="http://www.discourse.org/" rel="nofollow">Discourse</a>. For the moment, this will be done on my desktop.</p>
+<p>I start with the <a href="http://docs.docker.com/installation/ubuntulinux/" rel="nofollow">installation instructions</a> for Docker on Ubuntu 14.04.</p>
+<ul><li>For Discourse it’s needed to follow the instructions for the newest version of Docker and not to use the default Ubuntu package.</li></ul>
+<p>I proceed with <a href="http://www.howtoinstalldiscourse.com/how-to-install-discourse-on-ubuntu/" rel="nofollow">this tutorial</a> that specifies to run:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">wget -qO- https://get.docker.io/ | sh
+mkdir /var/docker
+git clone https://github.com/discourse/discourse_docker.git /var/docker
+cd /var/docker
+cp samples/standalone.yml containers/app.yml</code><!-- HTML_TAG_END --></pre>
+<p>I modify /var/docker/containers/app.yml (all relevant changes to app.yml are at the bottom)</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">DISCOURSE_HOSTNAME: &#39;localhost&#39;</code><!-- HTML_TAG_END --></pre>
+<p>but on running start <code>sudo ./launcher start app</code> I get:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">2014/11/16 10:46:31 Error response from daemon: Cannot start container 270d47cd8401c50f13e0a1e51428f5b9833a9480b53bc98735df55b425a70b6d: Error starting userland proxy: listen tcp 0.0.0.0:80: bind: address already in use</code><!-- HTML_TAG_END --></pre>
+<p>This could be expected, because Apache runs on port 80.</p>
+<p>in /var/docker/containers/app.yml there is an entry:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">expose:
+  - &quot;80:80&quot;   # fwd host port 80   to container port 80 (http)
+  - &quot;2222:22&quot; # fwd host port 2222 to container port 22 (ssh)</code><!-- HTML_TAG_END --></pre>
+<p>After using <code>netstat -antp</code> to confirm port 8080 is unused, I change 80:80 to 8080:80 in the app.yml.</p>
+<p>Now I rebuild and restart the container:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">cd /var/docker
+sudo ./launcher rebuild app # this applies the changes
+sudo ./launcher start app</code><!-- HTML_TAG_END --></pre>
+<p>When I use the browser to go to http://localhost:8080/, it immediately gives me Discourse page!</p>
+<p>Now I notice, when creating the admin account, that the activation mail is not send. Thinking back I did skip over the mail settings in the app.yml.</p>
+<p>Here I had to experiment a bit with my mail settings and this turned out in the end what took most of the time for getting Discourse up and running. One thing I learned is that it’s not neccesary to stop the app with <code>sudo ./launcher stop app</code> before making changes or rebuilding.</p>
+<p>Soon I find that running <code>sudo ./launcher mailtest app</code> gives much more useful information, thanks to <a href="https://meta.discourse.org/t/discourse-new-install-registration-emails-not-sent-because-from-address-cant-be-changed/16663/11" rel="nofollow">this thread</a>.</p>
+<p>I configure the app.yml to use the Google smtp server (settings are below), but <code>sudo ./launcher mailtest app</code> still gives an error:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">ERROR: python yaml module not installed - run the following and try again:
+
+sudo apt-get install python3-yaml</code><!-- HTML_TAG_END --></pre>
+<p>After installing this package mailtest tells me there is an authentication problem and apparently I need to allow “less secure apps” access to my gmail account. After setting this up at Google accounts, I can send mail with mailtest. </p>
+<p>The activate mail link is now send and I can access the admin panel in Discourse.</p>
+<p>I have also tried to set up mail with the SMTP settings of my own ISP, but this gave an error that I could not find any solutions to:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">Traceback (most recent call last):
+  File &quot;/var/docker/scripts/mailtest&quot;, line 138, in &lt;module&gt;
+    smtp = smtplib.SMTP(smtp_addr, smtp_port, timeout=5)
+  File &quot;/usr/lib/python3.4/smtplib.py&quot;, line 242, in __init__
+    (code, msg) = self.connect(host, port)
+  File &quot;/usr/lib/python3.4/smtplib.py&quot;, line 321, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File &quot;/usr/lib/python3.4/smtplib.py&quot;, line 292, in _get_socket
+    self.source_address)
+  File &quot;/usr/lib/python3.4/socket.py&quot;, line 509, in create_connection
+    raise err
+  File &quot;/usr/lib/python3.4/socket.py&quot;, line 500, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host</code><!-- HTML_TAG_END --></pre>
+<p>Since I never use my ISP’s mail server, it might simply be that I use the wrong SMTP address or something.</p>
+<p>In the end, I use these setting in my app.yml (these are just the edited fragments):</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">expose:
+  - &quot;8080:80&quot;  # fwd host port 80   to container port 80 (http)
+  - &quot;2222:22&quot;  # fwd host port 2222 to container port 22 (ssh)
+
+  DISCOURSE_DEVELOPER_EMAILS: &#39;myemail@example.com&#39;
+
+  DISCOURSE_HOSTNAME: &#39;localhost&#39;
+
+  DISCOURSE_SMTP_ADDRESS: smtp.gmail.com
+  DISCOURSE_SMTP_PORT: 587
+  DISCOURSE_SMTP_USER_NAME: mygmail@gmail.com
+  DISCOURSE_SMTP_PASSWORD: ******</code><!-- HTML_TAG_END --></pre>
+<p>I wonder now, since I’m starting discourse now with <code>./launcher start app</code> if I should have renamed the containers/app.yml to discourse.yml to be able to start Discourse with <code>./launcher start discourse</code>? I don’t know how difficult (or easy?) it will be to change this afterwards, but I will leave it for another time to figure this out.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/discourse-ubuntu">{"status":200,"statusText":"","headers":{},"body":"\"2014-11-16-discourse-ubuntu\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

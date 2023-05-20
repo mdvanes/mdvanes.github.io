@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Dop won't boot and USB issues</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="When I plugged in an USB stick in the USB3 front panel of my workstation dop, there was no response. The USB stick’s light didn’t turn on.
+
+After I opened up the sidepanel the USB plug to the motherboard wasn’t plugged in, so I fixed that."><meta property="og:url" content="https://mdworld.nl//dop-wont-boot">
+
+    
+
+    <meta property="og:title" content="Dop won't boot and USB issues">
+
+    <meta property="og:description" content="When I plugged in an USB stick in the USB3 front panel of my workstation dop, there was no response. The USB stick’s light didn’t turn on.
+
+After I opened up the sidepanel the USB plug to the motherboard wasn’t plugged in, so I fixed that.">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Dop won't boot and USB issues</h1>
+  <p class="meta svelte-191nhos"><span>Published: 02-03-2015</span>
+  <a href="/" class="pill svelte-191nhos">mypc</a>
+</p>
+  <p>When I plugged in an USB stick in the USB3 front panel of my workstation dop, there was no response. The USB stick’s light didn’t turn on.</p>
+<p>After I opened up the sidepanel the USB plug to the motherboard wasn’t plugged in, so I fixed that.</p>
+<p>After rebooting, I was greeted with this ugly message:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">Error: no such partition found 
+grub rescue&gt;</code><!-- HTML_TAG_END --></pre>
+<p>I tried using grub rescue. But using <code>ls</code> I can’t find the boot partion. Then I notice, the bootdisk isn’t showing up in the EFI.</p>
+<p>After opening up the sidepanel again I notice the power is not plugged in to my SSD, the bootdisk of the machine… Strangely, after plugging it in, the same error occurs.</p>
+<p>Booting from an Ubuntu live CD, all drives are visible, but the main SSD (/dev/sda2) shows an error in gparted. It does have the bios_grub flag. It gives the error:</p>
+<p><code>unable to detect file system</code></p>
+<p>After deleting the /dev/sda4 bios_grub partition of 17MB this leaves an EFI fat32 partition with boot flag (dev/sda3) and main partition /dev/sda1 with /boot.</p>
+<p>Reboot: doesn’t change anything.</p>
+<p>Now I’m really need to use the system, so I try rebooting with super grub disk. The system boots immediately with first found settings. I think I’ll leave it like this because I want to upgrade the SSD in the near future anyway.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/dop-wont-boot">{"status":200,"statusText":"","headers":{},"body":"\"2015-03-02-dop-wont-boot\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Elm for front-end developers</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="Elm for front-end developers - how we dove into Elm to rebuild part of our site.
+
+Why Elm?"><meta property="og:url" content="https://mdworld.nl//elm-for-frontend">
+
+    
+
+    <meta property="og:title" content="Elm for front-end developers">
+
+    <meta property="og:description" content="Elm for front-end developers - how we dove into Elm to rebuild part of our site.
+
+Why Elm?">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Elm for front-end developers</h1>
+  <p class="meta svelte-191nhos"><span>Published: 25-05-2018</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>Elm for front-end developers - how we dove into Elm to rebuild part of our site.</p>
+<h1>Why Elm?</h1>
+<p>The benefits of <a href="http://elm-lang.org/" rel="nofollow">Elm</a> (no runtime errors, typing) is what makes it accessible to our back-end developers. They are used to the functional style of Scala and in general to a workflow with a compiler. </p>
+<p>On the other hand, this workflow is also what makes the learning curve enormously steep to front-end developers; if you are used to the front-end workflow, working with a compiler is very different. Back-end (e.g. Scala) developers iterate by writing code and seeing if it compiles. Because of (unpredictable) runtime errors and intransparent state in conventional front-end projects, front-end developers have another kind of iterative workflow: write a small bit of code, see what the result is in the browser. And this means leaving the IDE, navigating your app and opening your browser devtools.</p>
+<p>The popularisation of live reloaders and the emphasis on a fast build chain (linters, precompilers) originates from this workflow. Although ultimately developing in a strongly typed and compiled language will have less errors, it does require a different programming style.</p>
+<p>Besides adapting to this workflow, the functionally pure coding style is infamously difficult to grasp for the uninitiated (See <a href="http://dave.fayr.am/posts/2011-08-19-lets-go-shopping.html" rel="nofollow">Functional Programming Is Hard,
+That’s Why It’s Good</a>, also just Google “functional programming is difficult”). You think you are comfortable with functional concepts (e.g. immutable state, pure functions, higher order functions, currying) and operators (e.g. map, filter, reduce) in JavaScript? This will be of very little help in Elm, because it is not possible to combine functional style with an OO style (or to fall back to OO when you are completely lost).</p>
+<p>Objects have no meaning in Elm, Elm is a true functional language, like Haskell and Scheme. JavaScript on the other hand is flexible, multi-paradigm (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" rel="nofollow">imperative, functional, prototype-based</a>) and scales from development by absolute beginners to enterprise.</p>
+<h2>Immutability</h2>
+<p>Take for instance immutability. In JavaScript (without libraries) the meaning of immutability is limited to the const keyword, which prevents you from reassigning to declared variables.</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">val</span><span class="token operator">:</span> <span class="token string">'foo'</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// prevented</span></code><!-- HTML_TAG_END --></pre>
+<p>It is still possible to change the contents of a constant however, with property reassignment.</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript">x<span class="token punctuation">.</span>val <span class="token operator">=</span> <span class="token string">'bar'</span> <span class="token comment">// value of x is now &#123;val: 'bar'&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p><a href="http://elmprogramming.com/immutability.html" rel="nofollow">Immutability in Elm</a> is much more invasive: there are no variables, only constants. Assignment can be written inline or take a chained style for clarity:</p>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token comment">-- inline</span>
+<span class="token hvariable">myVar</span> <span class="token operator">:</span> <span class="token constant">String</span>
+<span class="token hvariable">myVar</span> <span class="token operator">=</span> <span class="token string">"Hello, "</span> <span class="token operator">++</span> <span class="token builtin">toString</span><span class="token punctuation">(</span><span class="token hvariable">add</span> <span class="token number">5</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token hvariable">x</span> <span class="token operator">-></span> <span class="token hvariable">x</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code><!-- HTML_TAG_END --></pre>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token comment">-- chained</span>
+<span class="token hvariable">myVar</span> <span class="token operator">:</span> <span class="token constant">String</span>
+<span class="token hvariable">myVar</span> <span class="token operator">=</span> <span class="token number">4</span>
+    <span class="token operator">|></span> <span class="token punctuation">(</span><span class="token hvariable">x</span> <span class="token operator">-></span> <span class="token hvariable">x</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token operator">|></span> <span class="token hvariable">add</span> <span class="token number">5</span>
+    <span class="token operator">|></span> <span class="token builtin">toString</span>
+    <span class="token operator">|></span> <span class="token hvariable">String.append</span> <span class="token string">"Hello, "</span> </code><!-- HTML_TAG_END --></pre>
+<p>Note that the order is reversed to what you may expect in this chained notation, it reads from bottom to top.</p>
+<p>This is similar to chaining (functional) operators without storing intermediate state in JavaScript, e.g.:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">const</span> retweetAuthors <span class="token operator">=</span> listOfTweets
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">tweet</span> <span class="token operator">=></span> tweet<span class="token punctuation">.</span>isRetweet<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">tweet</span> <span class="token operator">=></span> tweet<span class="token punctuation">.</span>author<span class="token punctuation">)</span></code><!-- HTML_TAG_END --></pre>
+<p>Although the order here is from top to bottom.</p>
+<p>If a value can be changed (e.g. by user input or server updates) you need to use “update” functions in Elm. These will update the entire or partial application state by creating a new state and updating the part of the model that is relevant for this event.
+Example:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token literal-property property">updateModel</span> <span class="token operator">:</span> Msg <span class="token operator">-</span><span class="token operator">></span> Model <span class="token operator">-</span><span class="token operator">></span> Model
+updateModel msg model <span class="token operator">=</span>
+   <span class="token keyword">case</span> msg <span class="token keyword">of</span>
+       Name name <span class="token operator">-</span><span class="token operator">></span>
+           <span class="token punctuation">&#123;</span> model <span class="token operator">|</span> name <span class="token operator">=</span> name <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>Which means that in the case the message is “Name”, create a new “model” where model.name is set to the supplied name.</p>
+<p>An advantage is that over the course of use of the application a list of states is recorded, which enables time travel debugging (like in <a href="https://github.com/reduxjs/redux-devtools" rel="nofollow">this GIF</a>).</p>
+<p>This might look familiar if you have used <a href="https://redux.js.org/" rel="nofollow">Redux</a>. Redux is partially <a href="https://redux.js.org/introduction/prior-art#elm" rel="nofollow">inspired by Elm</a> and you might recognize the [dispatch, action] cycle in the way Elm updates the model. In that respect, it is is also similar to <a href="http://reactivex.io/rxjs/manual/tutorial.html#state-stores" rel="nofollow">state stores in RxJS</a>:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">const</span> increase <span class="token operator">=</span> Rx<span class="token punctuation">.</span>Observable<span class="token punctuation">.</span><span class="token function">fromEvent</span><span class="token punctuation">(</span>increaseButton<span class="token punctuation">,</span> <span class="token string">'click'</span><span class="token punctuation">)</span>
+    <span class="token comment">// We map to a function that will increase the count</span>
+    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token parameter">state</span> <span class="token operator">=></span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> state<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">count</span><span class="token operator">:</span> state<span class="token punctuation">.</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Here you can see that a new state object is created, and only the count property is updated.</p>
+<p>Another familiar aspect of Elm is the use of <a href="http://elmprogramming.com/virtual-dom.html" rel="nofollow">Virtual DOM</a>. Instead of manipulating the DOM directly, an in-memory representation of the UI (the virtual DOM) is modified, and that is synchronized to the real DOM. This improves performance dramatically and is one of <a href="https://reactjs.org/docs/faq-internals.html" rel="nofollow">the selling points of React</a>.</p>
+<p>With all of this in mind, we set out to rewrite <a href="https://www.codestar.nl" rel="nofollow">our company site</a> in Elm. The current implementation of the site is outdated and has all content stored locally. We want to migrate to a <a href="https://jamstack.org/" rel="nofollow">JAMstack</a> approach, with the content stored in cloud services (Youtube, Twitter, and photos in <a href="https://cloudinary.com/" rel="nofollow">Cloudinary</a>) and to pull the data in through the respective APIs with Elm. The idea is that Elm should be more accessible to our Scala devs, while still providing a mature environment for our front-end devs so maintenance can be done by either.</p>
+<p>Of course, all devs try to dive right in and soon are discouraged when this approach does not seem to work here. So maybe let’s read the Elm docs. There actually are quite a bit of docs. Maybe first finish the tutorials. Actually now I am even more confused…. </p>
+<h1>Toolchain/workflow</h1>
+<p>No matter if it is Elm, <a href="https://mdworld.nl/polymer-2-and-type-script" rel="nofollow">Polymer</a>, or any other New Solution that does not use ES6 modules, it means you can’t use the tools you are probably used to as a front-end developer, like ESLint. You are now at the mercy of the maturity of the ecosystem of the New Solution. Fortunately, it looks like Elm has a very active community and covers <a href="https://www.elm-tutorial.org/en/04-starting/03-webpack-1.html" rel="nofollow">Webpack integration</a>, for instance, right in the documentation.</p>
+<h2>Elm-reactor and external CSS</h2>
+<p>When starting out with Elm, you usually use elm-reactor to compile and serve Elm files. This offers a web interface that lets you navigate Elm files and when opening them serves them as HTML. Quite soon, you will find out that this presents a problem when you want to add external global resources, like CSS.
+The Elm app served by elm-reactor is compiled to JavaScript and wrapped in an HTML. But you can’t specify what that HTML should look like, so you can’t add e.g.</p>
+<pre class="language-html"><!-- HTML_TAG_START --><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>style.css<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code><!-- HTML_TAG_END --></pre>
+<p>You can (and eventually will) create your own HTML and build with e.g. webpack, but there is an intermediate solution if you want to get to know Elm better first, while keeping the benefits of elm-reactor, such as live reloading and the time travel debugger. It is <a href="https://github.com/elm-lang/elm-reactor/issues/199#issuecomment-279250207" rel="nofollow">not very well documented</a>, but you can create an HTML file that directly loads an Elm file. Elm-reactor will automatically compile and live update it. The HTML would contain:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> 
+    src<span class="token operator">=</span><span class="token string">"/_compile/app/src/Main.elm"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+    <span class="token function">runElmProgram</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code><!-- HTML_TAG_END --></pre>
+<p>We did notice that local custom fonts that were added while serving this way were not loaded. Custom fonts from a CDN will probably work.</p>
+<h2>Webpack</h2>
+<p>First I set up a Webpack config conforming to <a href="https://www.elm-tutorial.org/en/04-starting/04-webpack-2.html" rel="nofollow">this guide</a>. Before, I loaded an image in my Elm code, but now this image gives a 404 when I use the webpack-dev-server. It is also not copied to /dist when building. Webpack does not seem to resolve the image as an asset, which is a <a href="https://github.com/elm-community/elm-webpack-loader/issues/54" rel="nofollow">known issue</a>.
+There are workarounds, like setting the image as a CSS background and have the image dependency resolved by the css-loader, but that does <a href="https://mdworld.nl/polymer-2-and-type-script" rel="nofollow">not conform to a11y guidelines</a> for informative images.</p>
+<p>The suggested solution is to use <a href="https://github.com/NoRedInk/elm-assets-loader" rel="nofollow">elm-assets-loader</a>. Additional to the instructions:</p>
+<ul><li>I had to add ../ as a prefix to the image path</li>
+<li>It was helpful to run webpack instead of webpack-dev-server, it gave more informative errors</li>
+<li>I had to remove this line from the webpack config: <code>noParse: /\.elm$/,</code> because it failed on an SVG import without a compile error, but with a runtime error: “Uncaught ReferenceError: require is not defined”</li></ul>
+<p>This last issue arose because it <a href="https://github.com/elm-community/elm-webpack-loader#noparse" rel="nofollow">is suggested in elm-webpack-loader</a> to set <code>noParse: /\.elm$/,</code> conflicting with elm-css-webpack-loader, which I added later.</p>
+<p>The cause of the error and the workaround to set <code>noParse: /^((?!Stylesheet).)*\.elm.*$/,</code> instead, is explained in <a href="https://github.com/tcoopman/elm-css-webpack-loader" rel="nofollow">elm-css-webpack-loader</a>.</p>
+<h1>Getting the debugger back</h1>
+<p>When using Webpack, you don’t use elm-reactor so you don’t have the time travel debugger. This seems obvious: there is no Elm code anymore, it has been compiled to JS. It is very difficult to find documentation that mentions this. However, when using <a href="https://github.com/elm-community/elm-webpack-starter" rel="nofollow">elm-webpack-starter</a> it actually runs with the debugger!</p>
+<p>It seems this is actually an option for the elm-webpack-loader in the webpack.config.js. First we used this:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">&#39;elm-webpack-loader?verbose=true&amp;warn=true&#39;</code><!-- HTML_TAG_END --></pre>
+<p>Which is equivalent to:</p>
+<pre class="language-json"><!-- HTML_TAG_START --><code class="language-json"><span class="token punctuation">&#123;</span>
+   loader<span class="token operator">:</span> 'elm-webpack-loader'<span class="token punctuation">,</span>
+   options<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+       verbose<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+       warn<span class="token operator">:</span> <span class="token boolean">true</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>And here the option “debug” can be added:</p>
+<pre class="language-json"><!-- HTML_TAG_START --><code class="language-json"><span class="token punctuation">&#123;</span>
+   loader<span class="token operator">:</span> 'elm-webpack-loader'<span class="token punctuation">,</span>
+   options<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+       verbose<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+       warn<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+       debug<span class="token operator">:</span> <span class="token boolean">true</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>I had trouble finding this option, because I had looked at the <a href="https://github.com/elm-community/elm-webpack-loader" rel="nofollow">elm-webpack-loader readme</a>, but I searched for “debug” in the readme, and there is actually only a reference to all the options <a href="https://github.com/rtfeldman/node-elm-compiler/blob/3fde73d/index.js#L12-L23" rel="nofollow">in the source</a>.</p>
+<h1>Unit tests</h1>
+<p>We set up unit tests (see test/Assets.elm) and modified the npm tasks such that:</p>
+<ul><li>Postinstall runs elm package install for / and also for /tests/</li>
+<li>The new task <code>npm format-validate</code> validates /app/src and /tests/*.elm (as a quick way of excluding /tests/elm-stuff)</li>
+<li><code>npm test</code> runs <code>format-validate</code> and <code>elm-test</code></li>
+<li><code>npm run build</code> first runs <code>npm test</code> and then starts webpack-dev-server</li></ul>
+<h1>Speeding up the build on Travis</h1>
+<p>After adding a unit test (i.e. elm-test) the build speed is taking over 45 minutes on Travis CI.
+One suggestion is to <a href="https://8thlight.com/blog/rob-looby/2016/04/07/caching-elm-builds-on-travis-ci.html" rel="nofollow">cache the elm artifacts</a>.</p>
+<p>Add this to travis.yml:</p>
+<pre class="language-yml"><!-- HTML_TAG_START --><code class="language-yml"><span class="token key atrule">cache</span><span class="token punctuation">:</span>
+  <span class="token key atrule">directories</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> elm<span class="token punctuation">-</span>stuff/build<span class="token punctuation">-</span>artifacts
+    <span class="token punctuation">-</span> tests/elm<span class="token punctuation">-</span>stuff/build<span class="token punctuation">-</span>artifacts</code><!-- HTML_TAG_END --></pre>
+<p>The first build after adding this should be still slow, because the build-artifacts will have to be cached, but the second build should be faster:</p>
+<ul><li>build #23 (first build with cache on): 46 minutes 48 seconds</li>
+<li>build #24: 5 minutes 53 seconds</li></ul>
+<p>So it is worth the trouble!</p>
+<p>It would be possible to cache <code>elm-stuff</code> (where Elm dependencies are installed) instead of <code>elm-stuff/build-artifacts</code>, but this would require manually clearing the cache when new Elm dependencies are added.</p>
+<h1>Combining several components in one Elm app</h1>
+<p>We started out with several proofs of concept, so we have a separate TwitterFeed app and DiceRoller app that need to be integrated into the site app.
+I’ve followed my refactoring attempt (for splitting up one huge Elm file) that I did in <a href="https://github.com/mdvanes/elmsta/tree/refactoring" rel="nofollow">my first Elm experiment</a>, which helped integrating the models and update functions.</p>
+<p>The TwitterFeed has an initial Cmd. This must somehow be called by the initial Cmd of the main page app.</p>
+<p>This is the init of the Model and Cmd of the main page app. The TwitterFeed model has been added, but the initial Cmd is still “none”:</p>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token hvariable">init</span> <span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token constant">Model</span><span class="token punctuation">,</span> <span class="token constant">Cmd</span> <span class="token constant">Msg</span> <span class="token punctuation">)</span>
+<span class="token hvariable">init</span> <span class="token operator">=</span>
+   <span class="token punctuation">(</span> <span class="token constant">Model</span> <span class="token string">"Elm"</span> <span class="token hvariable">Material.model</span> <span class="token hvariable">initialDiceRoller</span> <span class="token hvariable">TwitterFeed.State.initialModel</span><span class="token punctuation">,</span> <span class="token hvariable">Cmd.none</span> <span class="token punctuation">)</span></code><!-- HTML_TAG_END --></pre>
+<p>I want a custom init cmd to be called:</p>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token hvariable">init</span> <span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token constant">Model</span><span class="token punctuation">,</span> <span class="token constant">Cmd</span> <span class="token constant">Msg</span> <span class="token punctuation">)</span>
+<span class="token hvariable">init</span> <span class="token operator">=</span>
+   <span class="token punctuation">(</span> <span class="token constant">Model</span> <span class="token string">"Elm"</span> <span class="token hvariable">Material.model</span> <span class="token hvariable">initialDiceRoller</span> <span class="token hvariable">TwitterFeed.State.initialModel</span><span class="token punctuation">,</span> <span class="token hvariable">initCmd</span> <span class="token punctuation">)</span></code><!-- HTML_TAG_END --></pre>
+<p>On init, I want to call a service to get Twitter messages. In the standalone TwitterFeed app this looks like this:</p>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token hvariable">initTwitterFeedCmd</span> <span class="token operator">:</span> <span class="token constant">Cmd</span> <span class="token constant">TwitterFeedMsg</span>
+<span class="token hvariable">initTwitterFeedCmd</span> <span class="token operator">=</span>
+   <span class="token hvariable">Task.attempt</span> <span class="token constant">NewTweets</span> <span class="token hvariable">fetchTweets</span></code><!-- HTML_TAG_END --></pre>
+<p>It is not possible to create an initCmd in the main page app that calls initTwitterFeedCmd directly:</p>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token hvariable">initCmd</span> <span class="token operator">:</span> <span class="token constant">Cmd</span> <span class="token constant">Msg</span>
+<span class="token hvariable">initCmd</span> <span class="token operator">=</span>
+   <span class="token hvariable">initTwitterFeedCmd</span></code><!-- HTML_TAG_END --></pre>
+<p>Because initTwitterFeedCmd is of the type Cmd TwitterFeedMsg. However, after adding TwitterFeedMsg to the union type for Msg, i.e.:</p>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token keyword">type</span> <span class="token constant">Msg</span>
+   <span class="token operator">=</span> <span class="token constant">Name</span> <span class="token constant">String</span>
+   <span class="token operator">|</span> <span class="token constant">Mdl</span> <span class="token punctuation">(</span><span class="token constant">Material.Msg</span> <span class="token constant">Msg</span><span class="token punctuation">)</span>
+   <span class="token operator">|</span> <span class="token constant">MsgForDiceRoller</span> <span class="token constant">DiceRollerMsg</span>
+   <span class="token operator">|</span> <span class="token constant">MsgForTwitterFeed</span> <span class="token constant">TwitterFeedMsg</span></code><!-- HTML_TAG_END --></pre>
+<p>Then it is possible to map from Cmd TwitterFeedMsg to Cmd Msg:</p>
+<pre class="language-elm"><!-- HTML_TAG_START --><code class="language-elm"><span class="token hvariable">initCmd</span> <span class="token operator">:</span> <span class="token constant">Cmd</span> <span class="token constant">Msg</span>
+<span class="token hvariable">initCmd</span> <span class="token operator">=</span>
+   <span class="token hvariable">initTwitterFeedCmd</span>
+       <span class="token operator">|></span> <span class="token hvariable">Cmd.map</span> <span class="token constant">MsgForTwitterFeed</span></code><!-- HTML_TAG_END --></pre>
+<h1>Conclusion</h1>
+<p>In the end we simply do not have a strong enough use case for Elm. There is too little state to manage and interaction between components. The TwitterFeed component does have state for instance, but it is so straight forward that Elm offers no advantage over JavaScript alternatives like RxJS state stores
+or Redux. In this sense Elm would be a good fit for an advanced web app or component with UI controls or complex logic. </p>
+<p>Also the steep learning curve for most developers remains, and although this was anticipated for front-end developers it proves more challenging to Scala devs than we first thought.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/elm-for-frontend">{"status":200,"statusText":"","headers":{},"body":"\"2018-05-25-elm-for-frontend\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

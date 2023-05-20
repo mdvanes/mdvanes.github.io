@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Polymer 2 and Redux</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="The coming time I will be spending a lot of time developing in Polymer 2.0, so I’ve done some research and made a small project to test some aspects of setting up a real-world application with it. It is in this repo. It contains two basic elements..."><meta property="og:url" content="https://mdworld.nl//polymer2-redux">
+
+    
+
+    <meta property="og:title" content="Polymer 2 and Redux">
+
+    <meta property="og:description" content="The coming time I will be spending a lot of time developing in Polymer 2.0, so I’ve done some research and made a small project to test some aspects of setting up a real-world application with it. It is in this repo. It contains two basic elements...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Polymer 2 and Redux</h1>
+  <p class="meta svelte-191nhos"><span>Published: 30-07-2017</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>The coming time I will be spending a lot of time developing in <a href="https://www.polymer-project.org/" rel="nofollow">Polymer 2.0</a>, so I’ve done some research and made a small project to test some aspects of setting up a real-world application with it. It is in <a href="https://github.com/mdvanes/polygram/" rel="nofollow">this repo</a>. It contains two basic elements (<em>polygram-searchbox</em> and <em>polygram-details</em>) that share state via Redux and also I’ve separated the UI from the API with a container element (<em>polygram-ui-details</em> vs <em>polygram-details</em>). This separation of concerns simplifies reuse (I reuse <em>polygram-ui-details</em> in <em>polygram-marvel-details</em>).</p>
+<p>Polymer CLI provides convenient utilities (project scaffolding, building), but the linter and WCT (web component tester) are lacking because they are too limited compared to e.g. ESLint and Karma and in fact it is <a href="https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#lint" rel="nofollow">encouraged to use an separate linter</a>. For that reason, I would have preferred that the Polymer linter would have been provided as an ESLint plugin.</p>
+<p>In the examples I use ES6 syntax without a transpiler, but I will soon have to investigate if bundling can be enriched with transpilation because I would at least like to try to use TypeScript. Of course we’re losing the module imports (<code>import x from &#39;./x&#39;</code>) in favor of html imports of elements (<code>&lt;link rel=&quot;import&quot; href=&quot;x.html&quot;&gt;</code>). I think it’s a loss, we finally have a standard for imports, why not stick to it?</p>
+<p>I would also still like to look at the possibility of adding <a href="https://github.com/gaearon/redux-thunk" rel="nofollow">Redux Thunk</a> and/or <a href="http://reactivex.io/rxjs/" rel="nofollow">RxJS</a> for async event handling. It seems that at least certain features of RxJS are already available in Polymer, e.g. <em>observers</em> on properties and the <em>debounce</em> attribute on <a href="https://www.webcomponents.org/element/PolymerElements/iron-ajax" rel="nofollow">iron-ajax</a>.</p>
+<p>On a side track I’ve also done a small comparative case between Polymer and <a href="https://html.spec.whatwg.org/multipage/custom-elements.html" rel="nofollow">native web components</a>, currently on version 1. This example is in the same repo, in the <a href="https://github.com/mdvanes/polygram/tree/master/demo/HelloWorld" rel="nofollow">HelloWorld demo</a>. Polymer builds on web components and implements of component driven development</p>
+<p>So far the syntax is very similar, but Polymer is opinionated on certain design decisions (the HTML format, for instance) and adds some convience functions, and more importantly polyfills for wider support (see <a href="https://www.webcomponents.org/polyfills/" rel="nofollow">webcomponents-lite</a>) and a <a href="https://www.webcomponents.org/" rel="nofollow">catalog</a> of reusable web components.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/polymer2-redux">{"status":200,"statusText":"","headers":{},"body":"\"2017-07-30-polymer2-redux\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

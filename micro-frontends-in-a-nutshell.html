@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Micro Frontends In A Nutshell</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="You may have heard of a Micro Frontends recently and felt it a bit difficult to grasp what exactly it is and if it is something you should get involved in. I’ll try to give a summary of the what, why, how, and when of the current state. To provide a..."><meta property="og:url" content="https://mdworld.nl//micro-frontends-in-a-nutshell">
+
+    
+
+    <meta property="og:title" content="Micro Frontends In A Nutshell">
+
+    <meta property="og:description" content="You may have heard of a Micro Frontends recently and felt it a bit difficult to grasp what exactly it is and if it is something you should get involved in. I’ll try to give a summary of the what, why, how, and when of the current state. To provide a...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Micro Frontends In A Nutshell</h1>
+  <p class="meta svelte-191nhos"><span>Published: 30-03-2022</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>You may have heard of a Micro Frontends recently and felt it a bit difficult to grasp what exactly it is and if it is something you should get involved in. I’ll try to give a summary of the what, why, how, and when of the current state. To provide a high-over summary, I’ll also add some recommended reading if you would like to get more details.</p>
+<h2><em>Why</em> use Micro Frontends?</h2>
+<p>Do you have a very large front-end code-base?</p>
+<p>And by large, I’m talking about 50+ developers in a dozen of teams or more, probably cross-department, working on the same code-base in some manner.
+Do you have enterprise-scale continuous integration with e.g. GitLab, Bamboo running so many pipelines that the bottleneck is no longer a matter of adding more pods?
+Do you employ configuration managers or an Ops department to make sure deployments won’t affect each other too much?
+Do you have considerable codebases in incompatible front-end stacks, e.g. because of a migration from AngularJS to Angular &gt;2?</p>
+<p>Then chances are you need to use Micro Frontends. Or actually, you most probably are <em>already</em> using Micro Frontends.</p>
+<h2><em>What</em> are Micro Frontends?</h2>
+<p>How is it possible you would not know you are using Micro Frontends? And why are we just now hearing so much about them? The truth is that although the term is relatively new it actually covers <strong>any range of solutions to integrate a collection of smaller frontends into one application</strong>.</p>
+<p>Similar to Micro Service architectures, Micro Frontends facilitate large codebases by breaking them up into manageable pieces. This means:</p>
+<ul><li>Technological stack across Micro Frontends in the same application may differ</li>
+<li>A Micro Frontend has a clear and concise purpose, following the SOLID principles</li>
+<li>Teams of developers maintain one or more Micro Frontend that are isolated in runtime from the rest of the code</li></ul>
+<p>The term is now popularized because of the advent of <em>Module Federation</em> in Webpack 5. Webpack 5 has been released towards the end of 2020, but this new major release is taking some time to be integrated in relevant tooling, e.g. Nx and Ng CLI.</p>
+<p>Note that Micro Frontends (MFEs) are sometimes also referred to as <em>Micro Apps</em>.</p>
+<h2><em>How</em> do you build Micro Frontends?</h2>
+<p>Since Micro Frontends as a concept are not new, some solutions that can be classified as Micro Frontends are ancient, considering the speed of development in the frontend ecosystem. Here are some of them, to give an idea of how broad Micro Frontends can be interpreted:</p>
+<ul><li>Run several frontend applications on different URLs and cross refer them with plain <strong>hyperlinks</strong></li>
+<li>Run several frontend applications on different URLs on the same page in <strong>iframes</strong></li>
+<li>Develop frontend components in separate teams and integrate them at build time to be deployed as a <strong>deployment monolith</strong></li>
+<li>Use macro <strong>Web Components</strong> as an abstraction layer for components</li>
+<li>Develop frontend components in separate teams and integrate them at runtime with <strong>Module Federation</strong></li></ul>
+<p>I won’t go into all the details about the pros and cons of each of these solutions. Instead I refer you to the recommended reading list below.</p>
+<p>Note that solutions can be combined: you can have a deployment monolith (that expects components that are all using the same stack) but wrap components in Web Components to provide an abstraction layer and use different stacks to produce the Web Components. Additionally, you can use Web Components in combination with Module Federation for instance if you are migrating towards Module Federation as a Micro Frontends solution.
+Consider this schematic representation of a web application:</p>
+<button class="lightbox"><img src="/lightbox/mfe/page.svg" alt="Overview of a page"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Overview of a page</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/mfe/page.svg" alt="Overview of a page"></dialog>
+<p>This could be implemented with different platforms like Angular and React by wrapping them in Web Components:</p>
+<button class="lightbox"><img src="/lightbox/mfe/web-components.svg" alt="Web Components"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Web Components</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/mfe/web-components.svg" alt="Web Components"></dialog>
+<p>Module Federation is the newest solution and many libraries are still adapting to it. Last year, Nx 12 released with support for Webpack 5 and Module Federation. See a real working example here <a href="https://code-star.github.io/nx-reference-shell/" rel="nofollow">https://code-star.github.io/nx-reference-shell/</a> or its source in <a href="https://github.com/code-star/nx-reference" rel="nofollow">https://github.com/code-star/nx-reference</a>.</p>
+<p>Because Micro Frontends break up a codebase into smaller, more manageable fragments, they are often mentioned in combination with Monorepo solutions like Nx or yarn/npm workspaces. However, it is perfectly possible to implement Micro Frontends without monorepos!</p>
+<h2><em>When</em> to use Micro Frontends?</h2>
+<p>New technology inspires developers to experiment, but Micro Frontends and with that Module Federation are not worth the upkeep for small to medium applications. All-in solutions like Next or Gatsby are great fits for smaller applications and custom Angular applications, when well organized, scale very well up to enterprise level.</p>
+<p>However, no framework inherently supports older versions of itself. So if a big bang migration from AngularJS to Angular or any other framework for that matter, you’ll end up with some kind of Micro Frontends solution. Plenty of enterprise codebases currently use some combination of hyperlinks and deployment monoliths.</p>
+<p>This could look like a bank that offers a set of public pages (e.g. the general home page, and the landing pages of its departments) referencing each other with hyperlinks and a protected monolith app with many components (e.g. checking account, subscriptions to bank products, investments on one page).</p>
+<button class="lightbox"><img src="/lightbox/mfe/hyperlinks-and-monolith.svg" alt="Hyperlinks and Monolith"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Hyperlinks and Monolith</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/mfe/hyperlinks-and-monolith.svg" alt="Hyperlinks and Monolith"></dialog>
+<p>Exploring Module Federation can be worth it if continuous integration is slowed down too much because of the large amounts of tests and compilation of all the involved components. But note that there are other approaches, such as using Nx monorepos with properly set up hierarchy and running only affected tests.</p>
+<p>Another reason to use Module Federation can be the need to support multiple frameworks. Compared to Web Components, Module Federation improves the runtime isolation of components while simultaneously reducing isolation of shared dependencies to reduce the overall footprint of the application.</p>
+<p>Compare to the diagram for the earlier example using macro Web Components, you can see that lodash, Angular and React are only loaded once, despite being used by multiple isolated components:</p>
+<button class="lightbox"><img src="/lightbox/mfe/module-federation.svg" alt="Module Federation"></button>
+
+<dialog class="lightbox__dialog"><div class="lightbox__dialog-header"><h1>Module Federation</h1>
+    <div><button>✕</button></div></div>
+  <img src="/lightbox/mfe/module-federation.svg" alt="Module Federation"></dialog>
+<h2>Want to know more?</h2>
+<p>If you want to know more about Micro Frontends, Module Federation or Monorepos, you can contact met at <a href="https://twitter.com/mdworldNL" rel="nofollow">@mdworldNL</a> on Twitter. We have experience with enterprise frontend at all the major banks and many governmental departments in the Netherlands.</p>
+<p>When you want more background information as a developer, you can also read the articles provided below.</p>
+<h2>Recommended in-depth reading</h2>
+<ul><li>Introduction to Micro Frontends: <a href="https://micro-frontends.org/" rel="nofollow">https://micro-frontends.org/</a></li>
+<li>Introduction to Micro Frontends: <a href="https://martinfowler.com/articles/micro-frontends.html" rel="nofollow">https://martinfowler.com/articles/micro-frontends.html</a></li>
+<li>Angular Architects<ul><li>Micro Frontends introduction: <a href="https://www.angulararchitects.io/en/aktuelles/a-software-architects-approach-towards/" rel="nofollow">https://www.angulararchitects.io/en/aktuelles/a-software-architects-approach-towards/</a></li>
+<li>Micro Frontends series: <a href="https://www.angulararchitects.io/en/aktuelles/micro-apps-with-web-components-using-angular-elements/" rel="nofollow">https://www.angulararchitects.io/en/aktuelles/micro-apps-with-web-components-using-angular-elements/</a></li>
+<li>Module Federation series: <a href="https://www.angulararchitects.io/en/aktuelles/the-microfrontend-revolution-module-federation-in-webpack-5/" rel="nofollow">https://www.angulararchitects.io/en/aktuelles/the-microfrontend-revolution-module-federation-in-webpack-5/</a></li></ul></li>
+<li>By my colleague Peter Eijgermans:<ul><li>Micro Frontends by Example: <a href="https://dzone.com/articles/micro-frontends-by-example-8" rel="nofollow">https://dzone.com/articles/micro-frontends-by-example-8</a></li>
+<li>(Video) Micro Frontends: The What, the Why and the How by Peter Eijgermans <a href="https://youtu.be/TWcoziCdPkE" rel="nofollow">https://youtu.be/TWcoziCdPkE</a></li></ul></li></ul></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/micro-frontends-in-a-nutshell">{"status":200,"statusText":"","headers":{},"body":"\"2022-03-30-micro-frontends-in-a-nutshell\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

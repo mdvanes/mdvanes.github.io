@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Full update for Broek</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="2-12-2015 After updating some packages, I rebooted for the first time after a long time. I thought it would help with cleaning up unused kernels on the boot partition. The box apparently hangs on boot, but no keyboard/monitor are connected so this..."><meta property="og:url" content="https://mdworld.nl//broek-full-update">
+
+    
+
+    <meta property="og:title" content="Full update for Broek">
+
+    <meta property="og:description" content="2-12-2015 After updating some packages, I rebooted for the first time after a long time. I thought it would help with cleaning up unused kernels on the boot partition. The box apparently hangs on boot, but no keyboard/monitor are connected so this...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Full update for Broek</h1>
+  <p class="meta svelte-191nhos"><span>Published: 02-12-2015</span>
+  <a href="/" class="pill svelte-191nhos">mypc</a>
+</p>
+  <p><strong>2-12-2015</strong> After updating some packages, I rebooted for the first time after a long time. I thought it would help with cleaning up unused kernels on the boot partition. The box apparently hangs on boot, but no keyboard/monitor are connected so this can still be anything. After connecting some peripherals, nothing happened. Upon trying to reboot the power LED stays on and doesn’t respond to pressing (and holding) the power button. Removing and reinserting the power cable is the final straw: now nothing happens, even the power LED stays off.</p>
+<p><strong>3-12-2015</strong> In a last attempt to find the culprit, I disassembled the box and plugged in old PSU. Upon connecting power and switching the PSU on, it’s fan twitches, but does not start spinning normally. Pressing the power button on the motherboard has no visible effect. The motherboard has probably died.</p>
+<p>Building a replacement was already planned, but now has to be rushed unfortunately, so these parts were ordered:</p>
+<ul><li>(mobo) ASRock B85M Pro4</li>
+<li>(ram) 2x  Crucial DDR3 DIMM 1x4GB 1600 C11</li>
+<li>(cpu) Intel Celeron G1840</li>
+<li>(case) Cooler Master Silencio 352</li>
+<li>(fan) Noctua NH-L9i</li>
+<li>(psu) Seasonic G-Serie 360Watt</li></ul>
+<p>Additionally, I will re-use the drives (80GB + 3TB) and a Samsung 840 SSD (128GB) that I have lying around.</p>
+<p><strong>12-12-2015</strong> After assembeling the parts and just popping in the hard drives the system boots normally, although getting the secondary drive to work this requires fixing its entry in /etc/fstab.</p>
+<p>The ethernet adapter is not working, which makes sense, because it is a different on-board adapter.</p>
+<ul><li>I can’t ping outside the system</li>
+<li>The ethernet lights next to the port are on</li>
+<li><code>ifconfig</code> lists a br0 and an lo device, but no eth0</li>
+<li>lspci lists the Ethernet Controller as Intel I217-V</li>
+<li>running <code>sudo lshw -C network</code> gives <code>*-network DISABLED</code></li>
+<li>running <code>dmesg | grep eth</code> gives <code>eth0: link is not ready</code></li>
+<li>renamed network interface eth0 to eth1, then ran:</li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">sudo modprobe e100
+sudo ifconfig eth1 up</code><!-- HTML_TAG_END --></pre>
+<ul><li>did not work, but no errors.</li>
+<li>According to <a href="http://www.serenux.com/2009/11/howto-fix-a-missing-eth0-adapter-after-moving-ubuntu-server-from-one-box-to-another/" rel="nofollow">this article</a> I need to edit <code>/etc/udev/rules.d/70-persistent-net.rules</code> (as root) and comment out the old ethernet device</li>
+<li>After rebooting, it detects the ethernet adapter automatically.</li></ul>
+<p><strong>13-12-2015</strong> Of course, since the on-board sound card also changed, its drivers also needs to be reconfigured. I plugged the speakers into the lime port, I just want to use 2 channel sound.</p>
+<ul><li><code>aplay /usr/share/sounds/alsa/Front_Center.wav</code> gives an error.</li>
+<li><code>sudo aplay -l</code> does lists several cards, one being PCH ALC892 analog</li>
+<li>when using alsamixer, I see that HDMI is set as the default out. The old motherboard did not have HDMI out, so it did detect this new HDMI correctly. This should be changed to analog.</li>
+<li>I tried several things that had no effect, such as reinstalling alsa and rebooting, and changing the default device with <code>pacmd list-cards</code></li>
+<li>Eventually, running <code>lspci -knn|grep -iA2 audio</code> shows I’m using snd_hda_intel kernel driver</li>
+<li>I edit <code>/etc/modprobe.d/alsa-base.conf</code> as root</li>
+<li>I add the line <code>options snd_hda_intel index=1</code> under the last “install”  statement</li>
+<li>Now I run <code>sudo alsa force-reload</code></li>
+<li>run alsamixer: now analog is active!</li>
+<li>run <code>aplay /usr/share/sounds/alsa/Front_Center.wav</code>. I hear the sound!</li></ul>
+<p>The case and fans were picked for being very silent. Unfortunately, they are still quite loud at the moment. I did have the sense to pick a case with PWM fans, so I need to configure those.</p>
+<p><a href="http://askubuntu.com/questions/22108/how-to-control-fan-speed" rel="nofollow">This article</a> describes how to set it up.</p>
+<ul><li>Install: <code>sudo apt-get install lm-sensors fancontrol</code></li>
+<li>Configure lm-sensors: <code>sudo sensors-detect</code></li></ul>
+<p>With the result:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">#----cut here----
+# Chip drivers
+coretemp
+nct6775
+#----cut here----</code><!-- HTML_TAG_END --></pre>
+<ul><li>After starting the service, <code>sensors</code> gives output. I see coretemp around 30 C and RPMs for fan1, fan2, fan5.</li>
+<li>Configure fancontrol: <code>sudo pwmconfig</code></li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">Found the following devices:
+   hwmon0/device is coretemp
+   hwmon1 is nct6776
+
+Found the following PWM controls:
+  hwmon1/pwm2           current value: 165
+  hwmon1/pwm3           current value: 165
+respond to changes, pwm1 doesn&#39;t. Probably the two chassis fans.</code><!-- HTML_TAG_END --></pre>
+<p>I have a <a href="http://www.silentpcreview.com/Noctua_NH-L9i" rel="nofollow">Noctua NH-L9i CPU fan</a> so I could use the Low-Noise adapter, but lets first try PWM.</p>
+<p>Fan2 seems to be the CPU fan, because the fan speed corresponds with the max speed of the Noctua NH-L9i. During pwmconfig I found out that setting the speed below 2000 RPM will greatly reduce the sound production. This means the low-noise adapter would definitely help. The CPU fan is hwmon1/fan2_input and is controlled by pwm hwmon1/pwm2.</p>
+<p>After configuring both fans with pwmconfig, I start fancontrol service: <code>sudo service fancontrol start</code> and the noise dropped significantly!</p>
+<p>The front fan (I think, I can’t really hear it that well) is still quite noisy. It doesn’t respond to configuring by pwmconfig, for some reason. I might just turn it off. The state after configuring:</p>
+<ul><li>fan1 (front?): was 1100 before configuration → after configuration 1100 (unchanged)</li>
+<li>fan2 (cpu): 2500 → 1150</li>
+<li>fan3 (rear?): 1100 → 380</li></ul>
+<p><strong>15-12-2015</strong> Added the low noise adapter to the front fan. Running <code>sensors</code>:</p>
+<ul><li>fan1 (front): 1100 → 881. </li>
+<li>fan2 (cpu): 980</li>
+<li>fan5 (rear): 327. </li>
+<li>Cpu temp around 32 C</li></ul>
+<p>The noise production is now is very low.</p>
+<p>I’ve also added two extra drives (an SSD and an old 1,5TB HDD) that need to be configured. Running <code>sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL</code> gives:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">NAME                    FSTYPE        SIZE MOUNTPOINT  LABEL
+sda                                   2.7T            
+&#96;-sda1                  ext4          2.7T /mnt/disk3t
+sdb                                  74.5G            
+|-sdb1                  ext2          243M /boot      
+|-sdb2                                  1K            
+&#96;-sdb5                  LVM2_member  74.3G            
+  |-broek-root (dm-0)   ext4         71.8G /          
+  &#96;-broek-swap_1 (dm-1) swap          2.5G [SWAP]     
+sdc                                   1.4T            
+&#96;-sdc1                  ext3          1.4T             OldDrive
+sdd                                 119.2G            
+|-sdd1                  ext4          119G            
+&#96;-sdd3                  vfat          249M             EFI</code><!-- HTML_TAG_END --></pre>
+<p>The filesystem sizes give away which drives are which and even the label of one of the drives is still intact.
+For the moment I mount them manually:</p>
+<pre class="language-bash"><!-- HTML_TAG_START --><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/sdc1 /mnt/disk1500g
+<span class="token function">sudo</span> <span class="token function">mount</span> /dev/sdd1 /mnt/diskSsdTemp</code><!-- HTML_TAG_END --></pre>
+<p>Both seem to work, so I just added them to the fstab and configured the 1,5TB drive as an export via Webmin.</p>
+<p>At this moment only the USB device <a href="https://bitbucket.org/mdvanes/mderekelbox" rel="nofollow">Rekelbox</a> doesn’t work anymore. I thought it might need an update of the USB drivers, not unlike the audio and network drivers before. The initPort.sh script fails with
+<code>stty: /dev/ttyUSB0: Inappropriate ioctl for device</code>. Trying to find a solution gives many hits, non of which seem appropriate for my case. Trying a USB flash drive works fine, so I don’t think it’s the USB drivers.</p>
+<p>After searching messageboards for a long time, I just tried rebooting with the USB device plugged in: it started working immediately!</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/broek-full-update">{"status":200,"statusText":"","headers":{},"body":"\"2015-12-02-broek-full-update\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

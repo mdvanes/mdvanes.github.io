@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>KnockoutJS and ES6</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="In the past year I’ve made some ES6 projects, for instance HomeRemote, an ES6 flavored React project. My company mainly uses a KnockoutJS based theme and it would be an improvement to introduce ES6 to this theme. The combination of Knockout and ES6..."><meta property="og:url" content="https://mdworld.nl//knockout-and-es6">
+
+    
+
+    <meta property="og:title" content="KnockoutJS and ES6">
+
+    <meta property="og:description" content="In the past year I’ve made some ES6 projects, for instance HomeRemote, an ES6 flavored React project. My company mainly uses a KnockoutJS based theme and it would be an improvement to introduce ES6 to this theme. The combination of Knockout and ES6...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>KnockoutJS and ES6</h1>
+  <p class="meta svelte-191nhos"><span>Published: 07-05-2016</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>In the past year I’ve made some ES6 projects, for instance <a href="https://bitbucket.org/mdvanes/homeremote" rel="nofollow">HomeRemote</a>, an ES6 flavored React project. My company mainly uses a KnockoutJS based theme and it would be an improvement to introduce ES6 to this theme. The combination of Knockout and ES6 is not very common, so I’ve summarized my endeavors.</p>
+<h1>Precompiling with Webpack</h1>
+<p>Because I want to use ES6 classes and native modules, which are respectively <em>not well</em> and <em>not at all</em> supported cross browser, I will use a transpiler. Because I will want to look into component based development, I choose <a href="https://webpack.github.io/" rel="nofollow">Webpack</a>, also because it is pluggable and has e.g. Typescript support.</p>
+<p>Although I am aware of the advantages of TypeScript and it’s adoption should increase with the advent of Angular 2, I will stick with plain ES6 for the moment, to stay as close as possible to the native syntax.</p>
+<p>It is not very clear how to install all the needed dependencies for ES6 compilation with Webpack. It does give feedback on missing modules when running, so with some trial and error, this should be the installer command:</p>
+<pre class="language-bash"><!-- HTML_TAG_START --><code class="language-bash"><span class="token function">npm</span> i --save-dev webpack webpack-dev-server webpack-merge grunt-webpack babel-core babel-loader babel-preset-2015</code><!-- HTML_TAG_END --></pre>
+<p>Because <a href="https://github.com/gruntjs/grunt-contrib-jshint" rel="nofollow">JShint</a> and <a href="https://github.com/jscs-dev/grunt-jscs" rel="nofollow">JSCS</a> do not support ES6 syntax, I replace them with <a href="https://github.com/jscs-dev/grunt-jscs" rel="nofollow">ESlint</a>:</p>
+<pre class="language-bash"><!-- HTML_TAG_START --><code class="language-bash"><span class="token function">npm</span> i --save-dev grunt-eslint</code><!-- HTML_TAG_END --></pre>
+<p>I integrate Webpack and ESlint into Grunt, this is very straight-forward:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token literal-property property">eslint</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">configFile</span><span class="token operator">:</span> <span class="token string">'.eslintrc'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">dev</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">'_js/**/*.js'</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+
+<span class="token literal-property property">webpack</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">options</span><span class="token operator">:</span> webpackConfig<span class="token punctuation">,</span>
+    <span class="token literal-property property">build</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">progress</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span></code><!-- HTML_TAG_END --></pre>
+<p>Both Webpack and ESlint changed the syntax for their configuration since the last time I used it, my configs look like this now:</p>
+<ul><li>Webpack 1.13.0</li></ul>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> merge <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack-merge'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> common <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token literal-property property">entry</span><span class="token operator">:</span> <span class="token string">'./_js/app.js'</span><span class="token punctuation">,</span>
+
+    <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'.js'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+
+    <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'bundle.js'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+
+    <span class="token literal-property property">devtool</span><span class="token operator">:</span> <span class="token string">'source-map'</span><span class="token punctuation">,</span>
+
+    <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">loaders</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+                <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">query</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+                    <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'es2015'</span><span class="token punctuation">]</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> common<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<ul><li>ESlint (grunt-eslint 18.1.0)</li></ul>
+<pre class="language-json"><!-- HTML_TAG_START --><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"parserOptions"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"ecmaVersion"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token property">"sourceType"</span><span class="token operator">:</span> <span class="token string">"module"</span><span class="token punctuation">,</span>
+    <span class="token property">"ecmaFeatures"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"browser"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"es6"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"no-bitwise"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"curly"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"eqeqeq"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"no-use-before-define"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"new-cap"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"no-caller"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"no-undef"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"no-unused-vars"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token property">"args"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"no-trailing-spaces"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"strict"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"function"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"quotes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"single"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"complexity"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<h1>The Entrypoint</h1>
+<p>The file app.js is the main entrypoint. It imports all the factories and classes as dependencies and registers them to our application API (bqApp). E.g.:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">import</span> otherCustomModelFactory <span class="token keyword">from</span> <span class="token string">'./es6/viewmodels/otherCustomModelFactory'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> otherCustomTemplateFactory <span class="token keyword">from</span> <span class="token string">'./es6/otherCustomTemplateFactory'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>bqApp <span class="token operator">&amp;&amp;</span> blueriq<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    bqApp<span class="token punctuation">.</span>modelFactory<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>otherCustomModelFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    bqApp<span class="token punctuation">.</span>templateFactory<span class="token punctuation">.</span><span class="token function">registerModelHandler</span><span class="token punctuation">(</span>otherCustomTemplateFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>The registering used to be done in e.g. the customModelFactory file itself, but when using ES6 modules, I started to notice how this requires a dependency to bqApp in the customModelFactory file, while it’s only needed for registering the factory. For the sake of
+high cohesion, I decided to export the finished factory and register it in the app.js instead.</p>
+<p>In advance, one of my main concerns was handling existing variables that the application API puts on the global scope, because the API is not yet in ES6 style. Fortunately, in contrast to Typescript it is not needed to have typing definitions, making it trivial to mix ES5 and ES6 libraries in one app. Because ES6 modules are used in the app.js, it is no longer needed to use an IIFE for scoping (the ES6 modules are scoped at the file level anyway) or strict mode declaration (implicit, because strict mode indicates ES5 syntax). This does mean I need an alternative way to reference global variables. E.g. the bqApp variable is put on the global scope by the application API, which I can’t change at the moment, instead of being exposed as an importable module. Supposedly, it would be possible to wrap it in a file that converts the global to a module. For the short term I see two options, though:</p>
+<ol><li><code>/* global bqApp:false */</code> - this works because the var is on the global scope, it’s just ESlint who warns for undefined variables.</li>
+<li><code>const bqApp = window.bqApp;</code> - explicitly reassinging to a local variable, which is basically what I used to do when supplying window.bqApp as a parameter to an IIFE, and then declaring bqApp as an argument in that IIFE.</li></ol>
+<p>For the moment I will stick with option 1, although I have included an example of both just to be complete.</p>
+<h1>Viewmodels and the viewmodel factory</h1>
+<p>Most viewmodels that we use extend from some existing viewmodel that is build into the application API, such as blueriq.models.BaseModel. A very simple example:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">ko<span class="token punctuation">,</span> blueriq</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">FooModel</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">model<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        blueriq<span class="token punctuation">.</span>models<span class="token punctuation">.</span><span class="token function">BaseModel</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> model<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>ko<span class="token punctuation">,</span> window<span class="token punctuation">.</span>blueriq<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>As said, I was concerned about using existing variables from the application API. I had no idea how the ES6 “extend” would convert to ES5, but fortunately it seems to be backwards compatible with the approach above, because this simply works:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">/* globals blueriq:false */</span>
+
+<span class="token comment">// I want to extend blueriq.models.dashboard.PageModel (which is an old-fashioned ES5 class). This works!</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PageModel</span> <span class="token keyword">extends</span> <span class="token class-name">blueriq<span class="token punctuation">.</span>models<span class="token punctuation">.</span>dashboard<span class="token punctuation">.</span>PageModel</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">model<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'new es6 PageModel'</span><span class="token punctuation">,</span> model<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> PageModel<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Now PageModel can be imported into the modelFactory, which decides what viewModel to use based on properties of the provided model.</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">import</span> PageModel <span class="token keyword">from</span> <span class="token string">'./PageModel'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">otherCustomModelFactory</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">otherCustomModelFactory</span><span class="token punctuation">(</span><span class="token parameter">model<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>model<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'page'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">PageModel</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> otherCustomModelFactory<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>It has already been shown how otherCustomModelFactory is imported and registered in app.js.</p>
+<h1>Templates</h1>
+<p>Creating a templateFactory, which decides what template to use based on properties of the provided model, is nearly identical to the modelFactory:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">/* globals blueriq */</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">otherCustomTemplateFactory</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">otherCustomTemplateFactory</span><span class="token punctuation">(</span><span class="token parameter">viewModel<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>viewModel<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'field'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">'themes/myTheme/template/field'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> otherCustomTemplateFactory<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>At this moment, the factory just returns the id of the template. The template itself is requested from the filesystem by the <a href="https://github.com/ifandelse/Knockout.js-External-Template-Engine" rel="nofollow">koExternalTemplateEngine</a> (this project has been retired for several years now) or with a custom solution that reads the template from a file that contains all templates. A very important improvement that could be made here is using Webpack to resolve the paths to the templates. It should be possible to write a custom loader that retrieves the contents of a template that is being imported, e.g. like this:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">/* globals blueriq */</span>
+<span class="token keyword">import</span> fieldTemplate <span class="token keyword">from</span> <span class="token string">'./template/field.html'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">otherCustomTemplateFactory</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">otherCustomTemplateFactory</span><span class="token punctuation">(</span><span class="token parameter">viewModel<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>viewModel<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'field'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> fieldTemplate<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> otherCustomTemplateFactory<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<h1>Custom Binding Handlers</h1>
+<p>Knockout <a href="http://knockoutjs.com/documentation/custom-bindings.html" rel="nofollow">handlers</a> need to be registered to ko.bindingHandlers, e.g. like this:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript">ko<span class="token punctuation">.</span>bindingHandlers<span class="token punctuation">.</span>clickTester <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token function-variable function">init</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">elem</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'you clicked it!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>If I would put this in a module, nothing would be exported. I still need to look into how the system would handle this. Probably it will just execute adding the bindinghandler and return nothing, but for the moment I just export the body of the handler and import and register it in our app.js.</p>
+<p>In handlers/clickTester.js:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token comment">/* globals $:false */</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> clickTester <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token function-variable function">init</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">elem</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">$</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'You clicked the ES6 KO Handler!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>In app.js:</p>
+<pre class="language-javascript"><!-- HTML_TAG_START --><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span>clickTester<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./es6/handlers/clickTester'</span><span class="token punctuation">;</span>
+ko<span class="token punctuation">.</span>bindingHandlers<span class="token punctuation">.</span>clickTester <span class="token operator">=</span> clickTester<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<h1>Follow up</h1>
+<p>I still need to improve the registration of handlers, I don’t know if I want them all in my app.js or maybe in a separate file. In that case I will need to figure out how to export “nothing” to my app.js, otherwise the import statement might fail.</p>
+<p>So far, our product does not use Knockout components. The style of component based development is very similar to React or Angular 2.0 components, although in practice, it might be closer to Angular 1.x directives. It would be interesting to see how it would translate to the ES6 syntax.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/knockout-and-es6">{"status":200,"statusText":"","headers":{},"body":"\"2016-05-07-knockout-and-es6\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

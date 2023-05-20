@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>npm workaround</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="EDIT The issue concerning the compilation of npm for ARM seems to have been fixed, which would outdate this post. The latest builds should be available at https://nodejs.org/dist/. For RPi 1 look for the builds with “armv6l”, for RPi2B “armv7l”, and..."><meta property="og:url" content="https://mdworld.nl//rpi-npm-workaround">
+
+    
+
+    <meta property="og:title" content="npm workaround">
+
+    <meta property="og:description" content="EDIT The issue concerning the compilation of npm for ARM seems to have been fixed, which would outdate this post. The latest builds should be available at https://nodejs.org/dist/. For RPi 1 look for the builds with “armv6l”, for RPi2B “armv7l”, and...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>npm workaround</h1>
+  <p class="meta svelte-191nhos"><span>Published: 12-07-2015</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p><strong>EDIT</strong> The issue concerning the compilation of npm for ARM seems to have been fixed, which would outdate this post. The latest builds should be available at <a href="https://nodejs.org/dist/" rel="nofollow">https://nodejs.org/dist/</a>. For RPi 1 look for the builds with “armv6l”, for RPi2B “armv7l”, and for RPi3 I assume you would need “arm64”.</p>
+<hr>
+<p>Although it’s relatively easy to install <a href="http://nodejs.org" rel="nofollow">Node.js</a> on a Raspberry Pi, getting npm to work is a bit more challenging. </p>
+<p>It seems there is <a href="http://redandwhite.herokuapp.com/#/post/5516eba439156a0e00cad4f6" rel="nofollow">an issue with compiling npm</a>, at least for ARM. As long as this remains unfixed, there is no npm with the node 0.12.x ARM installation.</p>
+<p>A very simple workaround is to copy the node_modules from another system and to run the packages (e.g. <a href="https://github.com/trentm/node-bunyan" rel="nofollow">bunyan</a>, which is supposed to be installed globally) with node. Since installing (globally or not) is not possible, but node is installed, I will call it directly from the node_modules that I copied from another machine.</p>
+<p>So instead of using <code>npm start</code> configured in package.json as <code>node app.js | bunyan</code> I would do <code>node app.js | node node_modules/bunyan/bin/bunyan</code></p>
+<p>Or if I would like to read the log file afterwards:</p>
+<p><code>node node_modules/bunyan/bin/bunyan -o short error.log</code></p>
+<p>This would also work for other systems where npm can’t be installed or if npm can’t be used to install packages. I’ve used this on a system behind a corporate proxy, although I’ve found <a href="../npm-without-internet">a better way</a> by now.</p>
+<h1>Node on RPi</h1>
+<p>Keep in mind that this still requires Node.js to be installed. For a Raspberry Pi running Raspbmc it’s possible to use <em>apt-get</em> to install Node, but it won’t be a recent version. Instead, I use the ARM build <em>node_latest_armhf.deb</em> from <a href="http://node-arm.herokuapp.com" rel="nofollow">node-arm</a>.</p>
+<h1>Compiling Node on RPi</h1>
+<p>I’ve also tried compiling Node from source on the Raspberry Pi (model B). It should not be very difficult, but it failed in my case, probably because of the issue with npm, mentioned before. To be complete, I will list my steps.</p>
+<ul><li>I had already installed gcc earlier with <code>sudo apt-get install build-essential</code></li>
+<li>I looked up the latest version in <a href="http://nodejs.org/dist/" rel="nofollow">http://nodejs.org/dist/</a></li>
+<li>At 11-7-2015 this was <a href="http://nodejs.org/dist/v0.12.7/node-v0.12.7.tar.gz" rel="nofollow">http://nodejs.org/dist/v0.12.7/node-v0.12.7.tar.gz</a></li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined"># adapted from http://elinux.org/Node.js_on_RPi
+wget http://nodejs.org/dist/v0.12.7/node-v0.12.7.tar.gz
+tar -xzf node-v0.12.7.tar.gz # duration ca. 1 min
+cd node-v0.12.7
+./configure # duration ca. 1 min</code><!-- HTML_TAG_END --></pre>
+<p>Here I would really recommend to start a screen session, because compiling takes ca. 2 hours.</p>
+<ul><li><code>sudo apt-get install screen</code></li>
+<li><code>screen</code> start a session</li>
+<li><code>ctrl + a, d</code> detach session</li>
+<li><code>screen -dRR</code> reattach to any session running</li></ul>
+<p>My first attempt to run make ended with this error:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/usr/include/linux/sysinfo.h:8:2: error: unknown type name &#39;__kernel_long_t&#39;&#96;</code><!-- HTML_TAG_END --></pre>
+<p>From <a href="http://raspberrypi.stackexchange.com/questions/8566/peerguardian-moblock-installation-on-raspbmc" rel="nofollow">this thread</a> I found the solution to add these lines:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">#ifndef __kernel_long_t
+typedef long     __kernel_long_t;
+typedef unsigned long   __kernel_ulong_t;
+#endif
+</code><!-- HTML_TAG_END --></pre>
+<p>to the file /usr/include/linux/sysinfo.h, before the lines:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">    #define SI_LOAD_SHIFT   16struct sysinfo &#123;...</code><!-- HTML_TAG_END --></pre>
+<p>The second attempt to run make failed with this error:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/bin/sh: 1: cannot create /home/pi/node-v0.12.7/out/Release/.deps//home/pi/node-v0.12.7/out/Release/obj.target/libuv/deps/uv/src/unix/linux-core.o.d: Permission denied</code><!-- HTML_TAG_END --></pre>
+<p>So in the end I ran clean and make as root:</p>
+<ul><li><code>sudo make clean</code></li>
+<li><code>sudo make</code></li></ul>
+<p>after some hours it fails with:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/out/Release/obj.target/v8_snapshot/geni/snapshot.cc&quot;
+Illegal instruction
+make[1]: *** [/home/pi/node-v0.12.7/out/Release/obj.target/v8_snapshot/geni/snapshot.cc] Error 132
+make[1]: Leaving directory &#96;/home/pi/node-v0.12.7/out&#39;
+make: *** [node] Error 2</code><!-- HTML_TAG_END --></pre>
+<p>This is either the compile issue as described in the beginning of this article, or yet again another issue. Since I found out about the compile issue at this point I’ve stopped experimenting and resorted to the quick workaround.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/rpi-npm-workaround">{"status":200,"statusText":"","headers":{},"body":"\"2015-07-12-rpi-npm-workaround\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

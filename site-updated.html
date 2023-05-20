@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Site updated</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="It’s always a hard decision to move to a new platform for my personal site, and this time it was sped up by the growing
+need for https (for SEO) and the release of GatsbyJS v1. 
+
+Up until now I was using a monolitical Apache + PHP webserver, but..."><meta property="og:url" content="https://mdworld.nl//site-updated">
+
+    
+
+    <meta property="og:title" content="Site updated">
+
+    <meta property="og:description" content="It’s always a hard decision to move to a new platform for my personal site, and this time it was sped up by the growing
+need for https (for SEO) and the release of GatsbyJS v1. 
+
+Up until now I was using a monolitical Apache + PHP webserver, but...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Site updated</h1>
+  <p class="meta svelte-191nhos"><span>Published: 10-05-2018</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>It’s always a hard decision to move to a new platform for my personal site, and this time it was sped up by the growing
+need for https (for SEO) and the release of GatsbyJS v1. </p>
+<p>Up until now I was using a monolitical Apache + PHP webserver, but since the 2013 version of the site, a dynamic webserver
+was no longer needed for the blog, because it was generated statically with Jekyll. Only the “send mail” component was
+in PHP and I was running some other PHP apps, and hosting some binaries, that have nothing to do with the blog. I’ve
+done away with the PHP apps: communication by mail was already almost zero and the other apps were outdated. </p>
+<p>Now the blog has been properly containerized, this means future upgrades will be easier too: the blog is its own app
+with its own scope. When I will need anything dynamic in the future, I will use <a href="https://serverless.com/" rel="nofollow">Serverless</a> functions.</p>
+<p>Another good reason to migrate from <a href="https://jekyllrb.com/" rel="nofollow">Jekyll</a> to <a href="https://www.gatsbyjs.org/" rel="nofollow">Gatsby</a> is letting go
+of Ruby dependencies and migrating to a NodeJS
+based platform. With Jekyll I started to run into problems with recreating the Jekyll stack with the
+correct dependencies to build the blog, in case of restoring after an emergency. This might be caused by my lack of knowledge
+of Ruby, but it meant it was really time to upgrade to a newer version of Jekyll or start with a new theme. And in the mean
+time, Gatsby 1.0 was released and I really subscribe to the <a href="https://jamstack.org/" rel="nofollow">JAMstack</a> architecture.  </p>
+<p>With the new setup, I can work with a modern and familiar stack e.g. Babel, React, TravisCI. I still believe in static site
+generation for blogs, and just like in Jekyll, adding a post in Gatsby is just a matter of adding a Markdown file with
+some frontmatter. But an improvement is that you can also drop React components in the pages dir that will be automatically
+picked up as pages. And it is even possible to add a React component inside a Markdown post. Try clicking the screenshots
+below for a simple lightbox feature and
+see the source for <a href="https://raw.githubusercontent.com/mdvanes/mdworld-jackson/master/content/posts/2018-05-10-site-updated.md" rel="nofollow">this post</a>. </p>
+<p>For more information about the current stack, see the <a href="../about">about page</a>.</p>
+<h1>Cover images</h1>
+<p>The cover images for each post, e.g. the image you see on top of this post, are procedurally generated
+with my project <a href="https://github.com/mdvanes/procgen-cover" rel="nofollow">procgen-cover</a>. This was inspired by the talk
+by <a href="http://www.galaxykate.com/" rel="nofollow">Kate Compton</a> on <a href="https://2018.jsconf.is/" rel="nofollow">JSConf.is</a> 2018. </p>
+<h1>Old themes</h1>
+<p>Static versions of the 2 last themes still run <a href="https://mdvanes.github.io/mdworld-ingram" rel="nofollow">here (2013-2018)</a>
+and <a href="https://mdvanes.github.io/mdworld-simon" rel="nofollow">here (2010-2013)</a>.</p>
+<p><strong>Theme 2013-2018</strong></p>
+<p><simple-light-box img-path="/lightbox/theme-ingram.jpg" img-title="Theme 2013-2018"></simple-light-box></p>
+<p><strong>Theme 2010-2013</strong></p>
+<p><simple-light-box img-path="/lightbox/theme-simon.jpg" img-title="Theme 2010-2013"></simple-light-box></p>
+<p><strong>Theme until 2010</strong></p>
+<p><img src="https://mdvanes.github.io/mdworld-simon/sites/default/files/images/vorig_design.jpg" alt="Theme until 2010"></p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/site-updated">{"status":200,"statusText":"","headers":{},"body":"\"2018-05-10-site-updated\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

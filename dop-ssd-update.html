@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.a8eb9529.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.00d394fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.ce9a7868.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.85a41521.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.471fb4f2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.21d95704.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.e3581657.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.7263f2c0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.3623ac9e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fba1893f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>Dop SSD update</title><!-- HEAD_svelte-1or47vi_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><!-- HEAD_svelte-1or47vi_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="I’m replacing the 128GB SSD (Samsung 840 pro) by a 500GB SSD (Samsung 850 EVO) so I have enough space to move the /home partition to the SSD as well. I also had the problem that suddenly my SSD is no longer booting, without using super grub disk, so..."><meta property="og:url" content="https://mdworld.nl//dop-ssd-update">
+
+    
+
+    <meta property="og:title" content="Dop SSD update">
+
+    <meta property="og:description" content="I’m replacing the 128GB SSD (Samsung 840 pro) by a 500GB SSD (Samsung 850 EVO) so I have enough space to move the /home partition to the SSD as well. I also had the problem that suddenly my SSD is no longer booting, without using super grub disk, so...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+
+<header class="svelte-1d7bivz"><div class="header-container main-column svelte-1d7bivz"><a href="/" class="svelte-1d7bivz"><img src="logos/logo-48.png" alt="logo"> MDWorld, a webdevelopment blog</a>
+
+    <nav class="svelte-1d7bivz"><ul class="svelte-1d7bivz"><li><a href="/about" class="svelte-1d7bivz">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1d7bivz"><img src="images/github.svg" alt="Github" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1d7bivz"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1d7bivz"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1d7bivz"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1d7bivz"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>Dop SSD update</h1>
+  <p class="meta svelte-191nhos"><span>Published: 30-04-2015</span>
+  <a href="/" class="pill svelte-191nhos">mypc</a>
+</p>
+  <p>I’m replacing the 128GB SSD (Samsung 840 pro) by a 500GB SSD (Samsung 850 EVO) so I have enough space to move the /home partition to the SSD as well. I also had <a href="../dop-wont-boot/">the problem</a> that suddenly my SSD is no longer booting, without using super grub disk, so I might solve this as well.</p>
+<p>Currently, I have the SSD with the boot and root partitions on it, a 320GB HDD with the /home (ext3) and swap partitions and a 1,5 TB HDD for storage. I will replace the SSD and the 320GB by the 500GB SSD.</p>
+<p>Booting a Ubuntu 13.04 live CD already gives some problems. Right after loading the desktop the system freezes. After multiple reboots it works normally. Using gparted to make exact copies of all partitions from the old SSD to the new SSD (just using copy/paste in gparted). I use a GPT partition table instead of msdos.</p>
+<p>Now I disconnect the old SSD and reboot with the super grub disk, like I was doing before. This boots as expected. No I try to fix the boot issue.</p>
+<h2>Making bootable</h2>
+<p>After BIOS initialization the message “no bootable partition found” is displayed. Using F12 before boot to select the SSD manually doesn’t work either, only super grub disk. I try to follow the official <a href="https://help.ubuntu.com/community/Boot-Repair" rel="nofollow">Boot Repair instructions</a>.</p>
+<p>Following the second option “install Boot-Repair in Ubuntu” I first login to Ubuntu normally (still booting with super grub disk) to install boot-repair:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt-get update
+sudo apt-get install -y boot-repair &amp;&amp; boot-repair</code><!-- HTML_TAG_END --></pre>
+<p>But when I try to run it (<code>boot-repair</code> and selecting “recommended repair”) I get a message:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">Please create a BIOS-Boot partition: (&gt;1MB, unformatted filesystem, bios_grub flag). This can be performed by tools like gparted, then try again.</code><!-- HTML_TAG_END --></pre>
+<p>So, let’s follow these detailed instructions!</p>
+<p>The current situation is:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/dev/sdc1 fat32       249MiB    label EFI   flags msftdata
+/dev/sdc2 ext4        118.98GiB             flags msftdata
+/dev/sdc3 linux-swap   15.62GiB</code><!-- HTML_TAG_END --></pre>
+<p>The fat32 partition was copied from the old SSD. I manually removed the fat32 partition and replaced it with an unformatted BIOS-boot partition and then I rebooted as instructed by gparted. Surprisingly, the partition still shows up as a fat32 partition so I select it and choose &gt; format &gt; cleared. Know the partion is listed as “unknown”.</p>
+<p>Setting the flag “bios_grub” gives this result for /dev/sdc1:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/dev/sdc1 unknown 249MiB, flags bios_grub</code><!-- HTML_TAG_END --></pre>
+<p>I rerun boot-repair &gt; recommended repair, but get another error:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">The boot of your PC is in EFI mode, but no EFI partition was deteced. You may want to retry after creating a EFI partiiton (FAT32, 100~250MB, start of disk, boot flag). Do you want to continue.</code><!-- HTML_TAG_END --></pre>
+<p>So I cancel and try to create the EFI partition from a part of the bios-boot partition with gparted:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/dev/sdc4 fat32      244Mib    label EFI   flags boot, esp
+/dev/sdc1 unknown      5MiB                flags bios_grub
+/dev/sdc2 ext4       118.98GiB             flags msftdata
+/dev/sdc3 linux-swap  15.62GiB</code><!-- HTML_TAG_END --></pre>
+<p>Now I close gparted and run boot-repair &gt; recommended repair for the third time, just to get this error again:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">The boot of your PC is in EFI mode, but no EFI partition was deteced. You may want to retry after creating a EFI partiiton (FAT32, 100~250MB, start of disk, boot flag). Do you want to continue.</code><!-- HTML_TAG_END --></pre>
+<p>Now I see no other choice then to continue and I get a progress window telling me that “repair file systems sdb1 this may require several minutes”. That’s odd, because sdb1 is not the new ssd. Anyway, after 30 minutes of running, I cancelled it and rebooted. And of course it still doesn’t work.</p>
+<p>Apparently this was all futile and I switch to the <a href="https://help.ubuntu.com/community/RecoveringUbuntuAfterInstallingWindows" rel="nofollow">non-graphical instructions to restore grub</a>. Now I’m trying:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">sudo grub-install /dev/sdc</code><!-- HTML_TAG_END --></pre>
+<p>This is done instantly. After rebooting and using F12 to select the boot device, I can now select the new SSD partition and boot Ubuntu. Progress!</p>
+<p>Unfortunately, booting still requires me to select the correct drive manually. This should be easy, just go into the BIOS and change the boot order. But where the boot order is listed, only 2 devices show up: the 1,5TB HDD and the optical drive. After frantic searching in the BIOS and online, I realize something like this might be mentioned in the manual (it is a Gigabyte Z87-HD3 motherboard), and indeed:</p>
+<ul><li>go to BIOS, switch to classic mode </li>
+<li>go to tab BIOS features</li>
+<li>now below boot order there is something like:<ul><li>DVD bbs priorities</li>
+<li>hard disk bbs priorities</li></ul></li>
+<li>click hard disk bbs priorities and here I can change the order.</li></ul>
+<p>Now it boots directly into Ubuntu! It’s using legacy boot and not EFI, but that’s fine.</p>
+<h2>Moving /home</h2>
+<p>Copying data from one disk to another is easy, but I want to change the formatting from ext3 to ext4 at the same time and of course it contains /home, so I need to update the mount point.</p>
+<ul><li>Use gparted to create new partition on the new SSD:</li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/dev/sdc5 ext4 330.91GiB</code><!-- HTML_TAG_END --></pre>
+<ul><li>Use rsync to copy from the old to the new partition. <ul><li>The syntax is <code>rsync --progress -a source dest</code></li>
+<li>from /dev/sda3 -&gt; /media/ubuntu/9af1dc04-72d9-43a9-a67c-c11f2118dfa6</li>
+<li>to /dev/sdc5 -&gt; /media/ubuntu/211c3ec1-1314-492d-946e-8cb3d24888a9</li>
+<li>so using <code>rsync --progress -a /media/ubuntu/9af1dc04-72d9-43a9-a67c-c11f2118dfa6 /media/ubuntu/211c3ec1-1314-492d-946e-8cb3d24888a9</code> (WARNING: this is a minor mistake because it creates a dir 9af1dc04-72d9-43a9-a67c-c11f2118dfa6 on the new drive, see below)</li>
+<li>I also run <code>watch -n30 df --type=ext4 --type=ext3 -BG</code> to have an indication of the progress</li></ul></li>
+<li>I immediately see that plenty of dirs give the error “rsync: open dir: permission denied”, so I run the same instruction but with sudo. Now it runs much longer. In a couple of hours everything is copied. Running it again logs nothing copied, so it seems to have been successful.</li></ul>
+<p>Now the reference of the /home mount point needs to be <a href="https://help.ubuntu.com/community/Partitioning/Home/Moving" rel="nofollow">fixed</a></p>
+<ul><li>the contents of /media/ubuntu/1ea18a24-56eb-4a89-9f54-f9d547c88e35/etc/fstab list as (only relevant parts):</li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined"># / was on /dev/sda1 during installation
+UUID=1ea18a24-56eb-4a89-9f54-f9d547c88e35 /       ext4   errors=remount-ro  0  1
+# /home was on /dev/sdb3 during installation
+UUID=9af1dc04-72d9-43a9-a67c-c11f2118dfa6 /home   ext3   defaults           0  2
+# swap was on /dev/sdb2 during installation
+UUID=079723eb-16f6-487f-b5bb-588d48ce0d55 none    swap   sw                 0  0</code><!-- HTML_TAG_END --></pre>
+<ul><li>listing all UUID with <code>sudo blkid</code> (only relevant parts):</li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/dev/sda2: UUID=&quot;079723eb-16f6-487f-b5bb-588d48ce0d55&quot; TYPE=&quot;swap&quot;
+/dev/sda3: UUID=&quot;9af1dc04-72d9-43a9-a67c-c11f2118dfa6&quot; SEC_TYPE=&quot;ext2&quot; TYPE=&quot;ext3&quot;
+/dev/sdc2: UUID=&quot;1ea18a24-56eb-4a89-9f54-f9d547c88e35&quot; TYPE=&quot;ext4&quot;
+/dev/sdc3: UUID=&quot;fbac86d0-4f93-4d8e-a762-dda9c2a61105&quot; TYPE=&quot;swap&quot;
+/dev/sdc5: UUID=&quot;211c3ec1-1314-492d-946e-8cb3d24888a9&quot; TYPE=&quot;ext4&quot;</code><!-- HTML_TAG_END --></pre>
+<ul><li>changed fstab to (only relevant parts:</li></ul>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined"># / was on /dev/sdc2 after move to new SSD
+UUID=1ea18a24-56eb-4a89-9f54-f9d547c88e35 /       ext4   errors=remount-ro 0  1
+# /home was on /dev/sdc5 after move to new SSD
+UUID=211c3ec1-1314-492d-946e-8cb3d24888a9 /home   ext4   defaults          0  2
+# swap was on /dev/sdc3 after move to new SSD
+UUID=fbac86d0-4f93-4d8e-a762-dda9c2a61105 none    swap   sw                0  0</code><!-- HTML_TAG_END --></pre>
+<ul><li>after rebooting, login failed. Relogged with live CD and found that the /home was copied to a subdir of the new drive. Copied it to the main dir and rebooted. Login in worked normally and is very fast! (How fast? 30 seconds from pressing the power button to seeing the homepage in Firefox)</li></ul>
+<p>And finally, when removing the old HDD from the case, I accidentally broke off a system fan pin from the motherboard. The other system fan pins are too far away and the other system fan already died some time ago. Now the only fan is the CPU fan, but so far it seems to be managing with a coretemp of max. 35°C and a CPU temp of max 26°C.</p></article></main>
+
+<footer class="svelte-1ip4abz"><div class="footer-container main-column svelte-1ip4abz"><div><a class="cc svelte-1ip4abz" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a class="rss svelte-1ip4abz" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/dop-ssd-update">{"status":200,"statusText":"","headers":{},"body":"\"2015-04-30-dop-ssd-update\""}</script>
+			<script>
+				{
+					__sveltekit_1evg191 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.00d394fa.js"),
+						import("./_app/immutable/entry/app.471fb4f2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

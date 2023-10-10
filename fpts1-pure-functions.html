@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="./favicon.png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.e41a4111.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.64d92054.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.f054af2f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.5e02e55c.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.64c90d95.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.a0264d24.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.d76af047.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.ae13e69e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/MetaTags.c7dd54e2.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.562987a9.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.68df5197.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>FP &amp; TS chapter 1: Functional Programming for TypeScript developers</title><!-- HEAD_svelte-1g8izgd_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous"><!-- HEAD_svelte-1g8izgd_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="If you have made the concious decision to prefer TypeScript over JavaScript, you probably were convinced by its promise to reduce runtime errors. Without knowing anything about Functional Programming (FP from now on), it fulfills the same role."><meta property="og:url" content="https://mdworld.nl//fpts1-pure-functions">
+
+    
+
+    <meta property="og:title" content="FP &amp; TS chapter 1: Functional Programming for TypeScript developers">
+
+    <meta property="og:description" content="If you have made the concious decision to prefer TypeScript over JavaScript, you probably were convinced by its promise to reduce runtime errors. Without knowing anything about Functional Programming (FP from now on), it fulfills the same role.">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">
+
+
+
+
+<header class="svelte-1315bri"><div class="header-container main-column svelte-1315bri"><a href="/" class="svelte-1315bri"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 694 586" class="svg svelte-owt51e"><title>The mdworld.nl logo</title><defs><linearGradient id="b"><stop offset="0" stop-color="#1b561b"></stop><stop offset="1" stop-color="#267626"></stop></linearGradient><linearGradient id="c" x1="351.86" x2="350.941" y1="657.606" y2="508.861" gradientTransform="matrix(3.73431 0 0 3.73431 -969.841 -1888.906)" gradientUnits="userSpaceOnUse" xlink:href="#b"></linearGradient></defs><path fill="url(#c)" stroke="#232323" stroke-width="17.403" d="M163.79 173.12l-35.343 180.715L577.23 16.413l102.027 546.81-343.357-259.901 71.452-57.516 135.87 106.028-36.01-187.382-494.13 400.105L119.111 17.08l222.792 176.046-74.586 56.681z"></path></svg>
+      <span>MDWorld, a webdevelopment blog</span></a>
+
+    <nav class="svelte-1315bri"><ul class="svelte-1315bri"><li><a href="/about" class="svelte-1315bri">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1315bri"><img src="images/github.svg" alt="Github" class="svelte-1315bri"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1315bri"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1315bri"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1315bri"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1315bri"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>FP &amp; TS chapter 1: Functional Programming for TypeScript developers</h1>
+  <p class="meta svelte-191nhos"><span>Published: 10-10-2023</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>If you have made the concious decision to prefer TypeScript over JavaScript, you probably were convinced by its promise to reduce runtime errors. Without knowing anything about Functional Programming (FP from now on), it fulfills the same role. That’s why FP and TS go hand in hand, in my opinion.</p>
+<p>This should become a series of articles, where each article dives deeper into FP paradigmes. But we start with two core concepts, pure functions &amp; immutability. These concepts, even on themselves, will promote cleaner coding and can be applied in any TypeScript project without libraries. More advanced concepts of FP are build on these principles, and that makes them a great place to start.</p>
+<h2>Pure functions</h2>
+<p>A pure function is a function that:</p>
+<ul><li>is deterministic</li>
+<li>has no side effects</li></ul>
+<p>Determinism means that for the same arguments, the function always returns the same output. It is predictable and stable.</p>
+<p>With side effects, we mean that nothing outside the scope of the function is modified. UI code relies heavily on side effects, since rendering anything is outside the scope of a function. Manipulating the DOM, but also logging to the console, or mutating global variables are all examples of side effects.</p>
+<p>Pure functions help prevent runtime errors because they are transparent and therefore easy to comprehend. When pure functions are written with conciseness and high cohesion in mind, they can improve readability. They are also easy to write tests for, because there is no environment to set up, you just have to supply the correct arguments.</p>
+<p>Some examples:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> addRandom <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> x <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The function <code>addRandom</code> is not pure, because it is non-deterministic. Because of the random function, it possibly returns a different output for the same value of the argument <code>x</code>.</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> add <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> sum <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+  window<span class="token punctuation">.</span>z <span class="token operator">=</span> sum<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The function <code>add</code> is not pure, because although it is deterministic, it can have side effects by modifying the global variable <code>window</code>.</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> simpleAdd <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> x <span class="token operator">+</span> y<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The function <code>simpleAdd</code> is pure, because it is deterministic and has no side effects.</p>
+<h2>Mathematics</h2>
+<p>FP lends a lot of its power from mathematics. Pure functions can be proven mathematically. If a lot of your code is mathematically provable, you have less code to test empirically.</p>
+<p>Compare the mathematical equation:</p>
+<!-- HTML_TAG_START --><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">f(x) = 2x ^2 + 4x + 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span></span><!-- HTML_TAG_END -->
+<p>to the function:</p>
+<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token keyword">const</span> f <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token number">2</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> x <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Both describe the same cubic polynomial expression called <code>f</code> that takes an argument <code>x</code> and apply basic arithmetic operations on <code>x</code>. There are no side effects (or are there?), and the result is deterministic. Because they can be mathematically proven, we know that <code>f</code> can be solved by the quadratic formula, there is no reason to write unit tests to figure that out!</p>
+<h2>The scale of purity</h2>
+<p>Unfortunately, a function is not just “pure” or “not pure”. Since output of any kind can be considered as side effects, it would not be useful to have a program of only completely pure functions. It’s more practical to see a function as “more pure” or “less pure”. To give an extreme example, look at the function <code>f</code> from the previous previous paragraph. Practically speaking, I would consider this quite pure. But you could argue that <code>Math</code> is a global and could be overridden between calls of <code>f</code>. To make that function more pure by writing it like this:</p>
+<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token keyword">const</span> f <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> pow<span class="token operator">:</span> <span class="token keyword">typeof</span> Math<span class="token punctuation">.</span>pow<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token function">pow</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> x <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>To my taste, that’s just a tad impractical.</p>
+<p>In general, it’s a good idea to isolate pure functions from functions you know to be not pure. For example, sometimes you actually want to have a random function, like in <code>addRandom</code> and you could deal with this by separating the pure part and the not pure part into separate functions:</p>
+<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token keyword">const</span> simpleAdd <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token keyword">const</span> addRandom <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token function">simpleAdd</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>This way, the undeterministic lines are code are limited to the absolute minimum.</p>
+<p>Another good way to limit side effects is by employing immutability, which will be the topic of the next article.</p>
+<p><em>Acknowledgement:</em> this article was inspired by the course <a href="https://frontendmasters.com/courses/functional-javascript-v3/" rel="nofollow">Functional-Light JavaScript, v3 by Kyle Simpson</a>.</p></article></main>
+
+<footer class="svelte-r5ma2i"><div class="footer-container main-column svelte-r5ma2i"><div><a class="cc svelte-r5ma2i" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2023 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a data-sveltekit-reload class="rss svelte-r5ma2i" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/fpts1-pure-functions">{"status":200,"statusText":"","headers":{},"body":"\"2023-10-10-fpts1-pure-functions\""}</script>
+			<script>
+				{
+					__sveltekit_hirpf6 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.64d92054.js"),
+						import("./_app/immutable/entry/app.64c90d95.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

@@ -6,6 +6,12 @@
 <link>https://mdworld.nl</link>
 <atom:link href="https://mdworld.nl/rss.xml" rel="self" type="application/rss+xml"/>
 <item>
+<guid isPermaLink="true">https://mdworld.nl/fpts1-pure-functions</guid>
+<title>FP & TS chapter 1: Functional Programming for TypeScript developers</title>
+<link>https://mdworld.nl/fpts1-pure-functions</link>
+<description>FP & TS chapter 1: Functional Programming for TypeScript developers</description>
+<pubDate>Tue, 10 Oct 2023 00:00:00 GMT</pubDate>
+</item><item>
 <guid isPermaLink="true">https://mdworld.nl/site-rebuild-with-svelte</guid>
 <title>Site Rebuild with Svelte</title>
 <link>https://mdworld.nl/site-rebuild-with-svelte</link>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="./favicon.png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.e41a4111.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ArticleMeta.abc8c39f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2014-11-29-on-reactive.1d166b07.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-01-20-fronteers-2014-css.c1f1e55f.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2015-04-15-fronteers-2014-a-glossary.7246c081.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Lightbox.ef707f92.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.1aa8c8dd.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.f054af2f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.59113912.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.421d29db.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.a0264d24.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.3ea2b760.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.6a830c33.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.svelte.d76af047.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ArticleMeta.ae13e69e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/MetaTags.c7dd54e2.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_slug_-page.ts.6182fe7f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page.fbce5287.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2defaa64.js"><title>FP &amp; TS chapter 3: Putting fun in functional operators</title><!-- HEAD_svelte-1g8izgd_START --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous"><!-- HEAD_svelte-1g8izgd_END --><!-- HEAD_svelte-1h7w4y4_START --><meta name="robots" content="index,follow"><meta name="googlebot" content="index,follow"><meta name="description" content="When you have been developing in TypeScript for a while, you are probably already using the functional operators, even if you don’t realize it. 
+
+The operators , , and  are native JavaScript methods that are used to iterate over
+collections without..."><meta property="og:url" content="https://mdworld.nl//fpts3-putting-fun-in-functional-operators">
+
+    
+
+    <meta property="og:title" content="FP &amp; TS chapter 3: Putting fun in functional operators">
+
+    <meta property="og:description" content="When you have been developing in TypeScript for a while, you are probably already using the functional operators, even if you don’t realize it. 
+
+The operators , , and  are native JavaScript methods that are used to iterate over
+collections without...">
+
+    <meta property="og:image" content="https://mdworld.nl/mdworld-ross/logos/logo-48.png">
+        <meta property="og:image:alt" content="MDWorld Logo">
+        <meta property="og:image:width" content="48">
+        <meta property="og:image:height" content="48">
+
+    
+
+    
+
+    <meta property="og:site_name" content="https://mdworld.nl"><!-- HEAD_svelte-1h7w4y4_END -->
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">
+
+
+
+
+<header class="svelte-1315bri"><div class="header-container main-column svelte-1315bri"><a href="/" class="svelte-1315bri"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 694 586" class="svg svelte-owt51e"><title>The mdworld.nl logo</title><defs><linearGradient id="b"><stop offset="0" stop-color="#1b561b"></stop><stop offset="1" stop-color="#267626"></stop></linearGradient><linearGradient id="c" x1="351.86" x2="350.941" y1="657.606" y2="508.861" gradientTransform="matrix(3.73431 0 0 3.73431 -969.841 -1888.906)" gradientUnits="userSpaceOnUse" xlink:href="#b"></linearGradient></defs><path fill="url(#c)" stroke="#232323" stroke-width="17.403" d="M163.79 173.12l-35.343 180.715L577.23 16.413l102.027 546.81-343.357-259.901 71.452-57.516 135.87 106.028-36.01-187.382-494.13 400.105L119.111 17.08l222.792 176.046-74.586 56.681z"></path></svg>
+      <span>MDWorld, a webdevelopment blog</span></a>
+
+    <nav class="svelte-1315bri"><ul class="svelte-1315bri"><li><a href="/about" class="svelte-1315bri">About</a></li>
+        <li><a href="https://github.com/mdvanes/" class="svelte-1315bri"><img src="images/github.svg" alt="Github" class="svelte-1315bri"></a></li>
+        <li><a href="https://mastodon.social/@mdworld" rel="me" class="svelte-1315bri"><img src="images/mastodon.svg" alt="Mastodon" class="svelte-1315bri"></a></li>
+        <li><a href="https://www.linkedin.com/in/mdvanes/" class="svelte-1315bri"><img src="images/linkedin.svg" alt="LinkedIn" class="svelte-1315bri"></a></li></ul></nav></div>
+</header>
+
+<main class="main-column">
+
+<article><h1>FP &amp; TS chapter 3: Putting fun in functional operators</h1>
+  <p class="meta svelte-191nhos"><span>Published: 18-04-2025</span>
+  <a href="/" class="pill svelte-191nhos">webdevelopment</a>
+</p>
+  <p>When you have been developing in TypeScript for a while, you are probably already using the functional operators, even if you don’t realize it. </p>
+<p>The operators <code>Array.prototype.map</code>, <code>Array.prototype.filter</code>, and <code>Array.prototype.reduce</code> are native JavaScript methods that are used to iterate over
+collections without mutating the original collection. </p>
+<p>Let’s first look at imperative style iteration. It’s possible to iterate over different types of objects, e.g.</p>
+<ul><li>string: <code>const x = &quot;123&quot;;</code></li>
+<li>array:  <code>const x = [1, 2, 3];</code></li>
+<li>array-like objects: e.g. NodeList <code>const x = document.querySelectorAll(&#39;div&#39;);</code></li>
+<li>Map, Set: <code>const x = new Set([1,2,3]);</code></li></ul>
+<p>The oldest way in JavaScript to iterate is with the <code>for</code> statement, e.g. to iterate over the characters in a string:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">"123"</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>This also works for Arrays, but to use it with Sets, you would first have to convert it to an Array.
+Also, this is quite verbose, because you have to manually define the counter <code>i</code>. Alternatively, the shorthand <code>for...of</code> can be used to solve both issues:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> elem <span class="token keyword">of</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<h2>The map operator</h2>
+<p>With immutability in mind, what is wrong with this example?</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> squareArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">const</span> item <span class="token keyword">of</span> sourceArr <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    squareArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item <span class="token operator">*</span> item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>squareArr<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The <code>squareArr</code> is mutated, and we want to avoid that it is unexpectedly manipulated. Let’s encapsulate the iteration in a function, so <code>squareArr</code> can’t be mutated outside that function:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">mapSquare</span> <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> squareArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">const</span> item <span class="token keyword">of</span> arr <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        squareArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item <span class="token operator">*</span> item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> squareArr<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">mapSquare</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>That’s much safer! Now we can also build a more abstract function that can iteratively apply any function, instead of always squaring the value.</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">map</span> <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">,</span> fn<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> resultArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">const</span> item <span class="token keyword">of</span> sourceArr <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        resultArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> resultArr<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">square</span> <span class="token operator">=</span> item <span class="token operator">=></span> item <span class="token operator">*</span> item<span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">map</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">,</span> square<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The <code>map</code> function returns a value, unlike the <code>for...of</code> loop from the initial example. The function <code>map</code> is a higher-order function, because it takes a function <code>fn</code> as a parameter. The function <code>square</code> is a pure function, and is trivial to unit test. </p>
+<p>Although it’s educational to see how we could implement the <code>map</code> function, it’s natively supported in TypeScript (with <code>Array.prototype.map</code>) as well as in many utility libraries like <a href="https://lodash.com" rel="nofollow">Lodash</a>.</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">square</span> <span class="token operator">=</span> item <span class="token operator">=></span> item <span class="token operator">*</span> item<span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>x <span class="token operator">=></span> <span class="token function">square</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>Because <code>Array.prototype.map</code> expects a function with the iterated item as a parameter, and <code>square</code> <em>is</em> a function with an item as a parameter, the <code>map</code> call can be reduced to:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>square<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The conclusion that these two expressions are equivalent, is proven by what is called “equational reasoning”.</p>
+<p>The <code>map</code> function can also be explicitely typed to expect to return a <code>number</code>. That implies that the result of the <code>map</code> call is always expected to be an array of numbers.</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> square <span class="token operator">=</span> <span class="token punctuation">(</span>item<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> item <span class="token operator">*</span> item<span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">.</span><span class="token generic-function"><span class="token function">map</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>square<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<h2>The filter operator</h2>
+<p>Let’s say you only want to keep the odd numbers from an array. With a <code>for...of</code> loop you could write it similar to the abstract <code>map</code> example above, like:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">filter</span> <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">,</span> predicateFn<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> resultArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">const</span> item <span class="token keyword">of</span> arr <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">predicateFn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            resultArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> resultArr<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">isOdd</span> <span class="token operator">=</span> item <span class="token operator">=></span> item <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">filter</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">,</span> isOdd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>In this example <code>isOdd</code> is a predicate function. A predicate is a function that always results in <code>true</code> or <code>false</code> and can therefore be used as a condition. </p>
+<p>You might realize how to use <code>Array.prototype.map</code> to write this without the <code>for</code> loop, but it’s easier to use the <code>Array.prototype.filter</code> operator. Where <code>map</code> always returns the same amount of items that goes in, <code>filter</code> uses a predicate to determine for each item in the array if it should be returned. The output of <code>filter</code> is therefore of the same length or shorter than its input. </p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">isOdd</span> <span class="token operator">=</span> item <span class="token operator">=></span> item <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isOdd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<h2>Type guards</h2>
+<p>In the <code>map</code> example the call used a generic to specify the return type with <code>.map&lt;number&gt;</code>. This does not work the same way with <code>filter</code>, because you can actually narrow the type based on the condition. E.g. if you are filtering odd numbers, numbers go in, but a specific subset of numbers comes out. This is extremely powerful because the type system can help you with this guarantee that the filtered values are of a specific subtype. We use TypeScript’s type guard syntax for this.</p>
+<p>Trivially, since a filter takes a predicate that always is <code>true</code> or <code>false</code>, you would expect the return type to be <code>boolean</code>:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> sourceArr<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> isOdd <span class="token operator">=</span> <span class="token punctuation">(</span>item<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=></span> item <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isOdd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>But in fact, you can specify what the type of <code>item</code> is when the predicate is <code>true</code>, by defining <code>isOdd</code> like a “type predicate”:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">type</span> <span class="token class-name">Even</span> <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">|</span> <span class="token number">4</span> <span class="token operator">|</span> <span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">Odd</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">|</span> <span class="token number">3</span> <span class="token operator">|</span> <span class="token number">5</span><span class="token punctuation">;</span> 
+<span class="token keyword">type</span> <span class="token class-name">OddOrEven</span> <span class="token operator">=</span> Odd <span class="token operator">|</span> Even<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> sourceArr<span class="token operator">:</span> OddOrEven<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> isOdd <span class="token operator">=</span> <span class="token punctuation">(</span>item<span class="token operator">:</span> OddOrEven<span class="token punctuation">)</span><span class="token operator">:</span> item <span class="token keyword">is</span> Odd <span class="token operator">=></span> item <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sourceArr<span class="token punctuation">.</span><span class="token generic-function"><span class="token function">filter</span><span class="token generic class-name"><span class="token operator">&lt;</span>Odd<span class="token operator">></span></span></span><span class="token punctuation">(</span>isOdd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<h3>Practical example: a response may have an error type</h3>
+<p>This example is contrived, so let me give a practical example with a fetch response that may be an error. Using the type guard guarantees that after the conditional the response is of one of the subtypes. You can also see that a type guard predicate can be used without using a <code>filter</code>.</p>
+<p>Given the types and function:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">SomeSuccess</span> <span class="token punctuation">&#123;</span>
+  data<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">SomeError</span> <span class="token punctuation">&#123;</span>
+  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">type</span> <span class="token class-name">SomeResponse</span> <span class="token operator">=</span> SomeSuccess <span class="token operator">|</span> SomeError<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> mutation <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> SomeResponse <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">&#123;</span> data<span class="token operator">:</span> <span class="token string">'some data'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>This would fail, because response could also be of type <code>SomeSuccess</code>:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token function">mutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Error: Property 'message' does not exist on type 'SomeSuccess'</span></code><!-- HTML_TAG_END --></pre>
+<p>Checking with <code>if(response.message)</code> is not possible, for the same reason. You <em>can</em> check with the <code>in</code> operator:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token function">mutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">'message'</span> <span class="token keyword">in</span> response<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// derived to be SomeError</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// derived to be SomeSuccess</span></code><!-- HTML_TAG_END --></pre>
+<p>But if you extract the conditional to a function, it would fail if it has a normal <code>boolean</code> return type:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> isError <span class="token operator">=</span> <span class="token punctuation">(</span>response<span class="token operator">:</span> SomeResponse<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=></span> <span class="token string">'message'</span> <span class="token keyword">in</span> response<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token function">mutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isError</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Property 'message' does not exist on type 'SomeSuccess'</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// Property 'data' does not exist on type 'SomeError'</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>And you can fix it by writing the conditional like a type guard:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> isError <span class="token operator">=</span> <span class="token punctuation">(</span>response<span class="token operator">:</span> SomeResponse<span class="token punctuation">)</span><span class="token operator">:</span> response <span class="token keyword">is</span> SomeError <span class="token operator">=></span> <span class="token string">'message'</span> <span class="token keyword">in</span> response<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<h3>Practical example: undefined checks</h3>
+<p>Another useful application of a filter with a type guard is reducing checks for undefined values in your conditions. Assume you get an array of objects from a service, which we will call <code>list</code>. We want to get the property <code>label</code> for each of these objects and use these later. When only a <code>map</code> is used, the resulting array may contain undefined values:</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">Bat</span> <span class="token punctuation">&#123;</span>
+    id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    label<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> list<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>Bat<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> id<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'first'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> id<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> newList <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>n <span class="token operator">=></span> n<span class="token punctuation">.</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The type of <code>newList</code> is now derived as <code>Array&lt;string | undefined&gt;</code>. This makes it hard to follow up transformations, because you will have to perform undefined checks. We can fix this by doing this up front with a type guard we will call <code>isDefined</code>.</p>
+<pre class="language-typescript"><!-- HTML_TAG_START --><code class="language-typescript"><span class="token keyword">const</span> isDefined <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token constant">T</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token operator">:</span> value <span class="token keyword">is</span> <span class="token constant">T</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token keyword">typeof</span> value <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> newList <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>n <span class="token operator">=></span> n<span class="token punctuation">.</span>label<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isDefined<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>The type of <code>newList</code> is now derived as <code>Array&lt;string&gt;</code>. Note that for older versions of TypesScript if you would not use the type guard syntax <code>value is T</code>, this would not work and <code>newList</code> would still have the type <code>Array&lt;string | undefined&gt;</code>! </p>
+<p>This has been fixed since TypeScript 5.5 with <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-5.html#inferred-type-predicates" rel="nofollow">Inferred Type Predicates</a>.</p>
+<p>In the next chapter we will look at more functional operators, including <code>Array.prototype.reduce</code>.</p>
+<p><em>Acknowledgement:</em> this article was inspired by the course <a href="https://frontendmasters.com/courses/functional-javascript-v3/" rel="nofollow">Functional-Light JavaScript, v3 by Kyle Simpson</a>.</p></article></main>
+
+<footer class="svelte-r5ma2i"><div class="footer-container main-column svelte-r5ma2i"><div><a class="cc svelte-r5ma2i" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="images/by-nc-sa.eu.svg" alt="creative commons" height="50px">
+        <div>2003-2025 MDWORLD</div></a></div>
+
+    <div><p>This site uses no tracking, analytics or cookies.</p>
+      <p>To prevent <a href="https://en.wikipedia.org/wiki/Link_rot">Link Rot</a>, URLs to articles
+        of previous versions of this blog are persistent since 2018.
+      </p>
+      <p>Hosted on <a href="https://pages.github.com">Github Pages</a>, domain at
+        <a href="https://vdx.nl">VDX.nl</a></p>
+      <a data-sveltekit-reload class="rss svelte-r5ma2i" href="https://mdworld.nl/rss.xml"><img src="images/rss.svg" alt="RSS"> RSS</a></div></div>
+</footer>
+
+
+			<script type="application/json" data-sveltekit-fetched data-url="/api/post/fpts3-putting-fun-in-functional-operators">{"status":200,"statusText":"","headers":{},"body":"\"2025-04-18-fpts3-putting-fun-in-functional-operators\""}</script>
+			<script>
+				{
+					__sveltekit_i5ii1r = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.1aa8c8dd.js"),
+						import("./_app/immutable/entry/app.421d29db.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
